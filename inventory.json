@@ -1,10 +1,10 @@
 {
-  "generated": "2026-10-01T13:02:45-05:00",
+  "generated": "2026-10-01T13:45:00-05:00",
   "zip": "70535",
   "radius_prefer_mi": 200,
-  "radius_stretch_mi": 250,
-  "radius_bound_used_mi": 250,
-  "radius_bound_note": "Prefer \u2264200 mi; allow up to 250 mi OSRM from 70535 to fill Top 16\u201320. Two-tone/RamBox are PRIORITY FLAGS (prefer into board first), not hard filters.",
+  "radius_stretch_mi": 400,
+  "radius_bound_used_mi": 400,
+  "radius_bound_note": "Prefer <=200 mi; allow up to 400 mi OSRM from 70535 (Hudson drove that far). Core = Ram Longhorn + F-150 King Ranch (used/CPO). Fill ONLY with two-tone Ram Laramie / Ford Lariat. Two-tone + RamBox = PRIORITY FLAGS.",
   "payment_apr": 0.05,
   "payment_months": 72,
   "payment_target": 700,
@@ -36,62 +36,70 @@
     ]
   },
   "priority_a": {
-    "status": "WATCH_OUTSIDE_RADIUS",
-    "note": "Little Rock Priority A ~355 mi over 250 stretch \u2014 watch only, not on board",
+    "status": "ON_BOARD",
+    "note": "Little Rock Priority A restored \u2014 355 mi <= 400 bound; dealer VDP live $42,121; two-tone white/camel",
     "vin": "1FTEW1E42LFA68436",
     "price": 42121,
     "miles": 9717,
+    "payment5_72": 753.98,
+    "distance_mi": 355,
+    "two_tone": true,
     "url": "https://www.crainhyundailittlerock.com/used-Little+Rock-2020-Ford-F+150-Lariat-1FTEW1E42LFA68436"
   },
-  "watch_outside_radius": [
-    {
-      "vin": "1FTEW1E42LFA68436",
-      "distance_mi": 355,
-      "note": "PRIORITY A Little Rock Lariat \u2014 outside 250"
-    },
-    {
-      "vin": "1C6SRFKT8PN656931",
-      "distance_mi": 377,
-      "note": "New Braunfels Longhorn RamBox \u2014 outside 250"
-    }
-  ],
+  "watch_outside_radius": [],
   "rambox_hunt": {
     "confirmed_in_list": 0,
-    "note": "No RamBox confirmed with options/photos among \u2264250 mi survivors; badge will show if found. Two-tone priority flags present on board."
+    "note": "No RamBox confirmed among <=400 mi / <=$755 OTD survivors. Two-tone Priority A Lariat on board."
   },
   "data_quality": {
     "hard_filter_max_miles": 60000,
-    "hard_filter_max_distance_mi": 250,
+    "hard_filter_max_distance_mi": 400,
     "prefer_distance_mi": 200,
     "hard_filter_max_otd_payment": 755,
     "prefer_otd_payment": 700,
     "ok_stretch_otd_payment": 723,
-    "survivor_count": 2,
-    "over_budget_dropped": 18,
-    "stretch_count": 1,
-    "two_tone_count": 0,
+    "survivor_count": 3,
+    "two_tone_lariat_laramie_fill_added": 1,
+    "two_tone_count": 1,
     "rambox_count": 0,
     "longhorn_count": 2,
+    "king_ranch_count": 0,
     "history_flagged_count": 1,
-    "audit_pass_count": 2,
+    "audit_pass_count": 3,
     "audit_fail_removed": [
       "1FTEW1E43LFA06575",
       "1FTFW1E59PFB18543",
       "1FTFW1E82PFA54257",
       "1FTFW6LD2SFB11515",
       "1C6SRFKT9PN551749",
-      "1FTFW6L89TFA80770"
+      "1FTFW6L89TFA80770",
+      "1C6SRFKM1PN505812",
+      "1C6SRFKT2PN602766",
+      "1FTEW1E46LFC77419"
     ]
   },
   "audit": {
-    "ran_at": "2026-10-01T13:02:45-05:00",
-    "method": "Fresh HTTP check of AutosToday + Cars.com; sold/unavailable regex; payment hard-cap \u2264$755 applied before board",
+    "ran_at": "2026-10-01T13:45:00-05:00",
+    "method": "HTTP/dealer VDP check 2026-10-01: Priority A Crain dealer page live $42121; Helfman+Group1 AutosToday InStock; Austin/Corpus/Jacksonville AR gone; New Braunfels RamBox Longhorn InStock but $48.5k OTD over cap; Hixson Alexandria Longhorn $42222 OTD pay $755.78 over hard cap; Opelousas Laramie $39984 single-tone (Delmonico Red/Black) \u2014 excluded under two-tone-only Laramie fill rule; Houma KR remains BANNED. Payment hard-cap <=$755 applied; do not pad to 20.",
     "board_results": [
+      {
+        "vin": "1FTEW1E42LFA68436",
+        "result": "PASS",
+        "verify": "dealer_vdp_live",
+        "note": "Crain Hyundai LR VDP 200 live $42,121; AutosToday InStock; two-tone white/camel",
+        "best_url": "https://www.crainhyundailittlerock.com/used-Little+Rock-2020-Ford-F+150-Lariat-1FTEW1E42LFA68436",
+        "action": "RESTORE_PRIORITY_A",
+        "dealer": "Crain Hyundai of Little Rock",
+        "price": 42121,
+        "distance_mi": 355,
+        "payment5_72": 753.98,
+        "two_tone": true
+      },
       {
         "vin": "1C6SRFKT0NN360525",
         "result": "PASS",
         "verify": "aggregator_instock",
-        "note": "AutosToday 200 InStock; Cars.com 403 (treated reachable/Cloudflare)",
+        "note": "AutosToday 200 InStock; history FLAG accident+multi-owner",
         "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT0NN360525",
         "action": "KEEP",
         "dealer": "Helfman CDJR",
@@ -103,7 +111,7 @@
         "vin": "1C6SRFKT2NN332032",
         "result": "PASS",
         "verify": "aggregator_instock",
-        "note": "AutosToday 200 InStock; Cars.com 403 (treated reachable/Cloudflare)",
+        "note": "AutosToday 200 InStock",
         "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT2NN332032",
         "action": "KEEP",
         "dealer": "Group 1 Toyota Southwest Houston",
@@ -112,206 +120,166 @@
         "payment5_72": 738.0
       }
     ],
-    "over_budget_dropped": [
+    "over_budget_or_rule_drops": [
       {
         "vin": "1C6SRFKT6MN666448",
-        "reason": "OTD payment $755.78/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 42222,
-        "payment5_72": 755.78,
-        "dealer": "Hixson Ford of Alexandria",
-        "year": 2021,
-        "make": "Ram",
-        "trim": "Longhorn Crew 4x4 CPO"
+        "reason": "OTD payment $755.78/mo > $755 hard cap",
+        "asking_price": 42222
       },
       {
-        "vin": "1C6SRFKT5MN547001",
-        "reason": "OTD payment $787.44/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 43998,
-        "payment5_72": 787.44,
-        "dealer": "CarMax Houston Katy Freeway",
-        "year": 2021,
-        "make": "Ram",
-        "trim": "Longhorn Crew 4x4"
+        "vin": "1C6SRFKT8PN656931",
+        "reason": "Asking $48532 -> OTD pay ~$869 > $755 (RamBox watch, New Braunfels 377 mi)",
+        "asking_price": 48532
       },
       {
-        "vin": "1C6SRFKT3RN172233",
-        "reason": "OTD payment $919.76/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 51420,
-        "payment5_72": 919.76,
-        "dealer": "Toyota of Katy",
-        "year": 2024,
-        "make": "Ram",
-        "trim": "Longhorn Crew 4x4"
+        "vin": "1C6SRFJP0SN503733",
+        "reason": "Laramie fill blocked \u2014 single-tone Delmonico Red/Black (two-tone-only rule)",
+        "asking_price": 39984
       },
       {
-        "vin": "1C6SRFHP3TN183380",
-        "reason": "OTD payment $1017.37/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 56895,
-        "payment5_72": 1017.37,
-        "dealer": "Autoplex Sulphur",
-        "year": 2026,
-        "make": "Ram",
-        "trim": "Limited Longhorn Crew 4x4"
+        "vin": "1C6SRFKM1PN505812",
+        "reason": "Austin Longhorn \u2014 Autostoday 410 No Longer / dealer VDP 404"
       },
       {
-        "vin": "1FTFW6LD0RFA98354",
-        "reason": "OTD payment $988.88/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 55297,
-        "payment5_72": 988.88,
-        "dealer": "EchoPark Automotive Houston",
-        "year": 2024,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
+        "vin": "1C6SRFKT2PN602766",
+        "reason": "Corpus Longhorn \u2014 Autostoday 404"
       },
       {
-        "vin": "1FTFW6LD0SFB84981",
-        "reason": "OTD payment $1106.78/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 61910,
-        "payment5_72": 1106.78,
-        "dealer": "Mercedes-Benz of Houston North",
-        "year": 2025,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
+        "vin": "1FTEW1E46LFC77419",
+        "reason": "Jacksonville AR KR \u2014 Autostoday 410 No Longer"
       },
       {
-        "vin": "1FTFW6LD4SFA33089",
-        "reason": "OTD payment $1159.99/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 64895,
-        "payment5_72": 1159.99,
-        "dealer": "Sterling Ford",
-        "year": 2025,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTFW6L81TFA53708",
-        "reason": "OTD payment $1187.45/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 66435,
-        "payment5_72": 1187.45,
-        "dealer": "Community Honda",
-        "year": 2026,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTEW1E56LFA81652",
-        "reason": "OTD payment $822.38/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 45958,
-        "payment5_72": 822.38,
-        "dealer": "TX Auto Group Houston",
-        "year": 2020,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTFW6L84RFA81365",
-        "reason": "OTD payment $1090.89/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 61019,
-        "payment5_72": 1090.89,
-        "dealer": "Group 1 Chevrolet Spring",
-        "year": 2024,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTFW6LD5SFA30797",
-        "reason": "OTD payment $1116.58/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 62460,
-        "payment5_72": 1116.58,
-        "dealer": "Mendoza Ford",
-        "year": 2025,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTFW6L83SFB42114",
-        "reason": "OTD payment $1130.06/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 63216,
-        "payment5_72": 1130.06,
-        "dealer": "Joe Myers Ford",
-        "year": 2025,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4 CPO"
-      },
-      {
-        "vin": "1FTFW6LD2SFA92500",
-        "reason": "OTD payment $1150.78/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 64378,
-        "payment5_72": 1150.78,
-        "dealer": "Geaux CDJR Denham Springs",
-        "year": 2025,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTFW6LD7SFA57161",
-        "reason": "OTD payment $1155.63/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 64650,
-        "payment5_72": 1155.63,
-        "dealer": "Randall Reed's Planet Ford",
-        "year": 2025,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTFW6LD4SFB59386",
-        "reason": "OTD payment $1213.92/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 67920,
-        "payment5_72": 1213.92,
-        "dealer": "Astro Ford",
-        "year": 2025,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTFW6L82SFB56277",
-        "reason": "OTD payment $1215.26/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 67995,
-        "payment5_72": 1215.26,
-        "dealer": "Peters Chevrolet",
-        "year": 2025,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
-      },
-      {
-        "vin": "1FTFW6LDXTFA43272",
-        "reason": "OTD payment $1259.37/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 70469,
-        "payment5_72": 1259.37,
-        "dealer": "Marketplace Chevrolet",
-        "year": 2026,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4 CPO"
-      },
-      {
-        "vin": "1FTFW6LD9TFB07494",
-        "reason": "OTD payment $1286.29/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R",
-        "asking_price": 71979,
-        "payment5_72": 1286.29,
-        "dealer": "Sterling Ford",
-        "year": 2026,
-        "make": "Ford",
-        "trim": "King Ranch SuperCrew 4x4"
+        "vin": "1C6SRFKT0LN170012",
+        "reason": "Selma Longhorn two-tone+RamBox but 92,408 mi > 60k hard filter"
       }
     ]
   },
   "caveats": [
-    "HARD CAP: OTD pay \u2264 $755/mo @ 5%/72 incl Acadia TTL&R \u2014 fewer than 20 trucks is correct; do not pad with over-budget units.",
-    "Prefer payment \u2264 $700\u2013$723 when choosing among survivors.",
-    "Bound: prefer \u2264200, allow \u2264250 mi OSRM from 70535.",
-    "Two-tone and RamBox are PRIORITY FLAGS (prefer into list); not hard inclusion filters.",
-    "Ranking: payment target fit \u2192 LTV \u2192 miles \u2192 Longhorn>KR \u2192 flags.",
+    "HARD CAP: OTD pay <= $755/mo @ 5%/72 incl Acadia TTL&R \u2014 fewer than 20 trucks is correct; do not pad with over-budget units.",
+    "Prefer payment <= $700\u2013$723 when choosing among survivors.",
+    "Bound: prefer <=200, allow <=400 mi OSRM from 70535 (Derek 2026-10-01).",
+    "Core pool: Ram Longhorn + F-150 King Ranch (used/CPO), <=60k mi.",
+    "Fill: Ram Laramie / Ford Lariat ONLY if two-tone paint (like Hudson's LR truck). No single-tone Lariat/Laramie.",
+    "Two-tone and RamBox are PRIORITY FLAGS (prefer into list).",
+    "Ranking: Priority A restore -> payment target fit -> LTV -> miles -> Longhorn>KR -> flags.",
     "TTL&R: Acadia Parish Eunice 10.70% + title $68.50 + license $112 + reg $8 @ 5%/72 OTD.",
     "KBB values are ESTIMATES \u2014 re-verify on kbb.com before offers.",
-    "Helfman #1: AutoCheck accidents + multi-owner \u2014 flagged on card, not silently demoted.",
-    "Houma AutosToday KR must never reappear (confirmed sold).",
-    "Dedicated audit pass completed before this deploy \u2014 see audit block."
+    "Helfman: AutoCheck accidents + multi-owner \u2014 flagged on card, not silently demoted.",
+    "Houma AutosToday KR 1FTEW1E43LFA06575 must never reappear (confirmed sold).",
+    "Dedicated availability audit completed before this deploy \u2014 see audit block."
   ],
-  "count": 2,
+  "count": 3,
   "trucks": [
     {
       "rank": 1,
-      "rank_reason": "Longhorn; OTD $698/mo; at target; 214 mi; 53,495 mi; AutoCheck accident+multi-owner FLAG",
+      "rank_reason": "PRIORITY A restored; two-tone white/camel Lariat; OTD $754/mo <=$755; 355 mi (<=400); 9,717 mi",
+      "priorityFind": true,
+      "year": 2020,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "Lariat SuperCrew 4x4",
+      "miles": 9717,
+      "price": 42121,
+      "payment5_72": 753.98,
+      "distance_mi": 355,
+      "twoTone": true,
+      "hasRamBox": false,
+      "vin": "1FTEW1E42LFA68436",
+      "photos": [
+        "https://cdn.dealeron.com/inventoryphotos/8184/1ftew1e42lfa68436/ip/1.jpg",
+        "https://cdn.dealeron.com/inventoryphotos/8184/1ftew1e42lfa68436/ip/2.jpg",
+        "https://cdn.dealeron.com/inventoryphotos/8184/1ftew1e42lfa68436/ip/3.jpg",
+        "https://cdn.dealeron.com/inventoryphotos/8184/1ftew1e42lfa68436/ip/4.jpg",
+        "https://cdn.dealeron.com/inventoryphotos/8184/1ftew1e42lfa68436/ip/5.jpg",
+        "https://cdn.dealeron.com/inventoryphotos/8184/1ftew1e42lfa68436/ip/6.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.crainhyundailittlerock.com/used-Little+Rock-2020-Ford-F+150-Lariat-1FTEW1E42LFA68436",
+        "carscom": null,
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E42LFA68436",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Crain Hyundai of Little Rock",
+        "address": "11715 Colonel Glenn Rd, Little Rock, AR 72210",
+        "phone": "501-438-0582"
+      },
+      "advertisedOptions": [
+        "Equipment Group 502A Luxury",
+        "FX4 Off-Road Package",
+        "Power-Deployable Running Boards",
+        "Adaptive Cruise Control",
+        "Max Trailer Tow Package",
+        "B&O Sound System",
+        "Tailgate Step w/ Lift Assist",
+        "Tough Bed Spray-In Bedliner",
+        "20\" Chrome-Like PVD Wheels",
+        "Extended Range 36 Gallon Fuel Tank",
+        "Quad Beam LED Headlamps"
+      ],
+      "kbbFairPurchase": 40500,
+      "kbbTradeIn": 36200,
+      "ltv": 1.04,
+      "dealPill": "Fair",
+      "id": "lr-lariat-68436",
+      "asking_price": 42121,
+      "two_tone": true,
+      "rambox": false,
+      "options_highlighted": [
+        "Two-Tone",
+        "FX4",
+        "502A Luxury",
+        "Adaptive Cruise",
+        "Max Trailer Tow",
+        "B&O Sound"
+      ],
+      "links": {
+        "dealer": "https://www.crainhyundailittlerock.com/used-Little+Rock-2020-Ford-F+150-Lariat-1FTEW1E42LFA68436",
+        "carscom": null,
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E42LFA68436",
+        "cargurus": null
+      },
+      "book_purchase": 40500,
+      "book_wholesale_proxy": 36200,
+      "book_source": "Estimated from market comps + KBB method (live KBB/Cars.com blocked 2026-10-01; re-verify on kbb.com)",
+      "condition": "Excellent",
+      "stock_number": "CS0189",
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "Star White Metallic Tri-Coat / Medium Light Camel",
+      "notes": "PRIORITY A RESTORED under 400-mi radius. Dealer VDP live 2026-10-01 Crain Price $42,121 (Retail $41,992 + $129 doc). Star White / Medium Light Camel TWO-TONE. Autostoday also InStock. Trim is LARIAT fill (two-tone only rule). Confirm by phone before trip.",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "deal_score": 1.46,
+      "dealer_name": "Crain Hyundai of Little Rock",
+      "payment5_72_price_only": 678.36,
+      "payment_includes_ttlr": true,
+      "is_stretch": true,
+      "availability_verify": "dealer_vdp_live",
+      "audit_result": "PASS",
+      "ttlr": {
+        "asking_price": 42121,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 4506.95,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 46816.45,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 753.98,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "KBB Fair Purchase ESTIMATE \u2014 re-verify on kbb.com before offer",
+        "Distance 355 mi from 70535 (allowed under new 400-mi bound; prefer <=200)"
+      ]
+    },
+    {
+      "rank": 2,
+      "rank_reason": "Longhorn core; OTD $698/mo; at target; 214 mi; 53,495 mi; AutoCheck accident+multi-owner FLAG",
       "priorityFind": false,
       "year": 2022,
       "make": "Ram",
@@ -369,7 +337,7 @@
       "cab": "Crew",
       "bed": "5.7 ft",
       "color": "white",
-      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200; this unit 214 mi). CAUTION: AutoCheck accidents + multi-owner \u2014 confirm report before trip.",
+      "notes": "Live AutosToday InStock audit PASS. Bound <=400 mi (prefer <=200; this unit 214 mi). CAUTION: AutoCheck accidents + multi-owner \u2014 confirm report before trip.",
       "still_for_sale": true,
       "date_seen": "2026-10-01",
       "ttlr": {
@@ -407,8 +375,8 @@
       "history_caution": true
     },
     {
-      "rank": 2,
-      "rank_reason": "Longhorn; OTD $738/mo; near $755 cap; 215 mi; 35,455 mi",
+      "rank": 3,
+      "rank_reason": "Longhorn core; OTD $738/mo; near $755 cap; 215 mi; 35,455 mi",
       "priorityFind": false,
       "year": 2022,
       "make": "Ram",
@@ -468,7 +436,7 @@
       "cab": "Crew",
       "bed": "5.7 ft",
       "color": "red",
-      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). ",
+      "notes": "Live AutosToday InStock audit PASS. Bound <=400 mi (prefer <=200).",
       "still_for_sale": true,
       "date_seen": "2026-10-01",
       "ttlr": {
@@ -490,54 +458,10 @@
       ],
       "availability_verify": "aggregator_instock",
       "audit_result": "PASS",
-      "is_stretch": true
+      "is_stretch": false
     }
   ],
   "drops": [
-    {
-      "vin": "1FTEW1E43LFA06575",
-      "reason": "AutosToday/Terrebonne Houma KR \u2014 caller confirmed sold/unavailable \u2014 BANNED"
-    },
-    {
-      "vin": "1FTFW1E59PFB18543",
-      "reason": "Ford of Harvey \u2014 VIN absent from dealer inventory"
-    },
-    {
-      "vin": "1FTFW1E82PFA54257",
-      "reason": "Ford of Harvey \u2014 VIN absent from dealer inventory"
-    },
-    {
-      "vin": "1FTFW6LD2SFB11515",
-      "reason": "Greg LeBlanc Toyota dealer VDP 404"
-    },
-    {
-      "vin": "1C6SRFKT9PN551749",
-      "reason": "AutosToday 404 during refill"
-    },
-    {
-      "vin": "1FTFW6L89TFA80770",
-      "reason": "AutosToday Price N/A + notfound.jpg"
-    },
-    {
-      "vin": "1FTEW1E42LFA68436",
-      "reason": "Distance 355 > 250 stretch \u2014 watch_outside_radius"
-    },
-    {
-      "vin": "1C6SRFKM1PN505812",
-      "reason": "Austin ~340 mi > 250"
-    },
-    {
-      "vin": "1C6SRFKT8PN656931",
-      "reason": "New Braunfels ~377 mi > 250 (RamBox watch)"
-    },
-    {
-      "vin": "1C6SRFKT2PN602766",
-      "reason": "Corpus ~320 mi > 250"
-    },
-    {
-      "vin": "1FTEW1E46LFC77419",
-      "reason": "Jacksonville AR ~360 mi > 250"
-    },
     {
       "vin": "1C6SRFKT6MN666448",
       "reason": "OTD payment $755.78/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R"
@@ -609,6 +533,54 @@
     {
       "vin": "1FTFW6LD9TFB07494",
       "reason": "OTD payment $1286.29/mo > $755 hard cap @ 5%/72 incl Acadia TTL&R"
+    },
+    {
+      "vin": "1FTEW1E43LFA06575",
+      "reason": "AutosToday/Terrebonne Houma KR \u2014 caller confirmed sold/unavailable \u2014 BANNED"
+    },
+    {
+      "vin": "1FTFW1E59PFB18543",
+      "reason": "Ford of Harvey \u2014 VIN absent from dealer inventory"
+    },
+    {
+      "vin": "1FTFW1E82PFA54257",
+      "reason": "Ford of Harvey \u2014 VIN absent from dealer inventory"
+    },
+    {
+      "vin": "1FTFW6LD2SFB11515",
+      "reason": "Greg LeBlanc Toyota dealer VDP 404"
+    },
+    {
+      "vin": "1C6SRFKT9PN551749",
+      "reason": "AutosToday 404 during refill"
+    },
+    {
+      "vin": "1FTFW6L89TFA80770",
+      "reason": "AutosToday Price N/A + notfound.jpg"
+    },
+    {
+      "vin": "1C6SRFKM1PN505812",
+      "reason": "Austin Longhorn \u2014 sold/delisted (Autostoday 410 / dealer 404) during 400-mi expand"
+    },
+    {
+      "vin": "1C6SRFKT2PN602766",
+      "reason": "Corpus Longhorn \u2014 Autostoday 404 during 400-mi expand"
+    },
+    {
+      "vin": "1FTEW1E46LFC77419",
+      "reason": "Jacksonville AR KR \u2014 Autostoday 410 No Longer during 400-mi expand"
+    },
+    {
+      "vin": "1C6SRFKT8PN656931",
+      "reason": "New Braunfels Longhorn RamBox \u2014 InStock but asking $48,532 OTD pay > $755"
+    },
+    {
+      "vin": "1C6SRFKT0LN170012",
+      "reason": "Selma Longhorn two-tone+RamBox \u2014 92,408 mi > 60k hard filter"
+    },
+    {
+      "vin": "1C6SRFJP0SN503733",
+      "reason": "Opelousas Laramie \u2014 under pay cap but single-tone (not two-tone fill)"
     }
   ],
   "payment_hard_cap_note": "HARD CAP: board only includes trucks with OTD payment \u2264 $755/mo @ 5%/72 incl Acadia TTL&R (10.70% + $68.50 title + $112 license + $8 reg). Prefer \u2264$700\u2013$723. DO NOT pad to 20 with over-budget trucks \u2014 fewer than 20 is OK."
