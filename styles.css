@@ -369,3 +369,47 @@ body {
   font-size: 0.82rem;
   color: var(--text-muted, #9aa3b2);
 }
+
+.missing-notes {
+  margin-top: 0.45rem;
+  font-size: 0.72rem;
+  color: #e8b84a;
+  line-height: 1.35;
+}
+.missing-notes ul { margin: 0.2rem 0 0; padding-left: 1.1rem; }
+.missing-notes li { margin: 0.1rem 0; }
+.pay-breakdown {
+  margin-top: 1rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+}
+.pay-breakdown h3 {
+  margin: 0 0 0.55rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+.pay-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.pay-table th {
+  text-align: left; font-weight: 500; color: var(--text-muted);
+  padding: 0.28rem 0.4rem 0.28rem 0; vertical-align: top; width: 68%;
+}
+.pay-table td {
+  text-align: right; font-family: var(--mono); font-size: 0.8rem;
+  padding: 0.28rem 0; white-space: nowrap;
+}
+.pay-table tr.pay-total th, .pay-table tr.pay-total td {
+  color: var(--text); font-weight: 700;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 0.45rem;
+}
+.pay-footnote {
+  margin: 0.55rem 0 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.pay-breakdown-missing { margin: 0; font-size: 0.8rem; color: var(--text-muted); }

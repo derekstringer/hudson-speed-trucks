@@ -148,6 +148,9 @@ function normalizeTruck(raw) {
     notes: raw.notes || raw.rank_reason || "",
     photos: Array.isArray(raw.photos) ? raw.photos : [],
     rank: raw.rank != null ? Number(raw.rank) : null,
+    missingDataNotes: Array.isArray(raw.missingDataNotes) ? raw.missingDataNotes : [],
+    ttlr: raw.ttlr || null,
+    payment5_72_price_only: raw.payment5_72_price_only != null ? Number(raw.payment5_72_price_only) : null,
   };
 }
 
@@ -227,6 +230,44 @@ function linkOrSpan(href, label) {
   return `<span class="link-disabled" title="No listing URL">${escapeHtml(label)}</span>`;
 }
 
+
+function money2(n) {
+  if (n == null || Number.isNaN(n)) return "—";
+  return n.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function renderPaymentBreakdown(t) {
+  const bd = t.ttlr;
+  if (!bd) {
+    return `<div class="pay-breakdown"><h3>How this payment was calculated</h3><p class="pay-breakdown-missing">TTL&amp;R breakdown not on this card — payment may be price-only.</p></div>`;
+  }
+  const ratePct = bd.sales_tax_rate_pct || ((bd.sales_tax_rate != null) ? ((bd.sales_tax_rate * 100).toFixed(2) + "%") : "—");
+  return `
+    <div class="pay-breakdown">
+      <h3>How this payment was calculated</h3>
+      <table class="pay-table">
+        <tbody>
+          <tr><th>Asking price</th><td>${money(bd.asking_price ?? t.asking_price)}</td></tr>
+          <tr><th>Sales tax (${escapeHtml(ratePct)}) · ${escapeHtml(bd.jurisdiction || "Eunice / Acadia Parish LA")}</th><td>${money2(bd.sales_tax_amount)}</td></tr>
+          <tr><th>Title fee</th><td>${money2(bd.title_fee)}</td></tr>
+          <tr><th>License fee (truck plate)</th><td>${money2(bd.license_fee)}</td></tr>
+          <tr><th>Registration (OMV handling)</th><td>${money2(bd.registration_fee)}</td></tr>
+          <tr class="pay-total"><th>Amount financed (OTD)</th><td>${money2(bd.amount_financed)}</td></tr>
+          <tr><th>APR / term</th><td>5% / 72 mo</td></tr>
+          <tr class="pay-total"><th>Monthly payment</th><td>${money(Math.round(bd.monthly_payment ?? t.payment))}/mo</td></tr>
+        </tbody>
+      </table>
+      <p class="pay-footnote">No trade-in assumed. LTV pills still use asking vs KBB Fair Purchase / Trade-In (not OTD).</p>
+    </div>`;
+}
+
+function renderMissingNotes(t) {
+  const notes = t.missingDataNotes || [];
+  if (!notes.length) return "";
+  const lis = notes.map((n) => `<li>${escapeHtml(n)}</li>`).join("");
+  return `<div class="missing-notes" role="note"><strong>Data gaps:</strong><ul>${lis}</ul></div>`;
+}
+
 function renderCard(t) {
   const title = `${t.year} ${t.make} ${t.model} ${t.trim}`;
   const rambox = hasRamBox(t);
@@ -300,10 +341,11 @@ function renderCard(t) {
           <span>${escapeHtml(t.condition)}</span>
         </div>
         <div class="card-badges">${badges.join("")}</div>
+        ${renderMissingNotes(t)}
       </div>
       <div class="card-stats">
         <div class="stat-price">${money(t.asking_price)}</div>
-        <div class="stat-pay">~${money((t.payment!=null?Math.round(t.payment):0))}/mo @ 5%/72</div>
+        <div class="stat-pay">~${money((t.payment!=null?Math.round(t.payment):0))}/mo OTD @ 5%/72</div>
         <div class="stat-ltv">LTV ${pct(t.ltv_purchase)}</div>
       </div>
     </button>
@@ -333,7 +375,7 @@ function renderCard(t) {
           <h3>Book &amp; payment</h3>
           <dl>
             <dt>Asking</dt><dd>${money(t.asking_price)}</dd>
-            <dt>Payment 5%/72</dt><dd>${money((t.payment!=null?Math.round(t.payment):0))}/mo</dd>
+            <dt>Payment 5%/72 (OTD+TTL&amp;R)</dt><dd>${money((t.payment!=null?Math.round(t.payment):0))}/mo</dd>
             <dt>KBB purchase</dt><dd>${bookPurchaseHtml}</dd>
             <dt>LTV purchase</dt><dd>${pct(t.ltv_purchase)}</dd>
             <dt>Wholesale proxy</dt><dd>${bookWholesaleHtml}</dd>
@@ -344,12 +386,14 @@ function renderCard(t) {
           ${stretchCaution}
         </div>
       </div>
+      ${renderPaymentBreakdown(t)}
       <div class="notes">
         <strong>Sacrifice rank:</strong> prefer scarce two-tone first, then rare RamBox (priority find — not required).
         ${t.two_tone ? " Two-tone: yes." : " Two-tone: no."}
         ${rambox ? " RamBox: yes (PRIORITY FIND — rare)." : " RamBox: no."}
         ${t.notes ? `<br /><strong>Notes:</strong> ${escapeHtml(t.notes)}` : ""}
         ${t.rank_reason ? `<br /><strong>Why #${t.rank}:</strong> ${escapeHtml(t.rank_reason)}` : ""}
+        ${(t.missingDataNotes && t.missingDataNotes.length) ? `<br /><strong>Missing data:</strong> ${t.missingDataNotes.map(escapeHtml).join("; ")}` : ""}
       </div>
     </div>
   </article>`;
