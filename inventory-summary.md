@@ -1,62 +1,40 @@
 # Hudson Speed — Truck Inventory Summary
 
-**Generated:** 2026-10-01T10:45:00-05:00 (America/Chicago)
-**Buyer ZIP:** 70535 (Eunice, LA) · **hard bound 200 mi** (no 250 stretch)
-**Payment model:** 5% APR / 72 mo on **OTD (price + TTL&R)** · target ≤$700 · OK $723 · max $755
-**TTL&R primary:** Eunice / Acadia Parish · combined sales tax **10.70%** · title $68.50 · license $112 · reg $8
-**Count:** 9 trucks (cap 20; pool thin after ≤60k + Longhorn/KR + hard 200 mi + availability) — **9 stretches**
+**Generated:** 2026-10-01T10:40:00-05:00 (America/Chicago)
+**Bound:** prefer ≤200 mi, allow ≤250 mi from 70535
+**Count:** 20 · two-tone flags: 4 · RamBox: 0 · stretches: 19
+**TTL&R:** Acadia 10.70% + $68.50 + $112 + $8 · OTD @ 5%/72
+**Audit:** PASS on all board trucks (see inventory.json audit block). Houma KR banned.
 
-## Hard filters applied
-1. DROP miles > 60,000
-2. DROP missing miles OR missing price
-3. **Hard DROP dealer >200 mi from 70535** (OSRM road miles)
-4. DROP sold / no longer available after dealer link check
-5. Rank: two-tone Longhorn → Longhorn → King Ranch
+## Survivors
 
-## Availability link-check failures (dropped)
-| VIN | Vehicle | Reason |
-|-----|---------|--------|
-| `1FTEW1E43LFA06575` | 2020 Ford King Ranch SuperCrew 4x4 | Caller confirmed Terrebonne Ford / dealer page no longer available — DROP |
-| `1FTFW1E59PFB18543` | 2023 Ford King Ranch SuperCrew 4x4 | Link check FAIL: VIN not on Ford of Harvey used inventory — treat as sold/removed |
-| `1FTFW1E82PFA54257` | 2023 Ford King Ranch SuperCrew 4x4 | Link check FAIL: VIN not on Ford of Harvey used inventory — treat as sold/removed |
-| `1FTFW6LD2SFB11515` | 2025 Ford King Ranch SuperCrew 4x4 | Link check FAIL: Greg LeBlanc Toyota dealer VDP returns 404 Page Not Found |
-| `1FTFW6L89TFA80770` | 2026 Ford King Ranch SuperCrew 4x4 | AutosToday Price N/A + notfound.jpg; Classic Chevy Beaumont dealer AccessDenied — DROP missing price |
+| Rank | Dist | Year | Vehicle | Mi | Price | $/mo | Pill | Flags |
+|-----:|-----:|-----:|---------|---:|------:|-----:|------|-------|
+| 1 | 214 | 2022 | Ram Longhorn Crew 4x4 | 53,495 | $38,970 | $698 | Fair | STRETCH |
+| 2 | 215 | 2022 | Ram Longhorn Crew 4x4 | 35,455 | $41,225 | $738 | Fair | — |
+| 3 | 61 | 2021 | Ram Longhorn Crew 4x4 CPO | 57,753 | $42,222 | $756 | Stretch | STRETCH |
+| 4 | 229 | 2021 | Ram Longhorn Crew 4x4 | 34,976 | $43,998 | $787 | Stretch | STRETCH |
+| 5 | 228 | 2024 | Ram Longhorn Crew 4x4 | 12,360 | $51,420 | $920 | Stretch | STRETCH |
+| 6 | 70 | 2026 | Ram Limited Longhorn Crew 4x4 | 21,956 | $56,895 | $1017 | Stretch | STRETCH |
+| 7 | 201 | 2024 | Ford King Ranch SuperCrew 4x4 | 34,364 | $55,297 | $989 | Stretch | two-tone, STRETCH |
+| 8 | 201 | 2025 | Ford King Ranch SuperCrew 4x4 | 5,681 | $61,910 | $1107 | Stretch | two-tone, STRETCH |
+| 9 | 22 | 2025 | Ford King Ranch 4WD SuperCrew 5.5 Box | 9,487 | $64,895 | $1160 | Stretch | two-tone, STRETCH |
+| 10 | 181 | 2026 | Ford King Ranch SuperCrew 4x4 | 2,293 | $66,435 | $1187 | Stretch | two-tone, STRETCH |
+| 11 | 213 | 2020 | Ford King Ranch SuperCrew 4x4 | 33,690 | $45,958 | $822 | Stretch | STRETCH |
+| 12 | 201 | 2024 | Ford King Ranch SuperCrew 4x4 | 25,170 | $61,019 | $1091 | Stretch | STRETCH |
+| 13 | 47 | 2025 | Ford King Ranch SuperCrew 4x4 | 34,915 | $62,460 | $1117 | Stretch | STRETCH |
+| 14 | 217 | 2025 | Ford King Ranch SuperCrew 4x4 CPO | 20,568 | $63,216 | $1130 | Stretch | STRETCH |
+| 15 | 97 | 2025 | Ford King Ranch SuperCrew 4x4 | 24,625 | $64,378 | $1151 | Stretch | STRETCH |
+| 16 | 191 | 2025 | Ford King Ranch SuperCrew 4x4 | 23,607 | $64,650 | $1156 | Stretch | STRETCH |
+| 17 | 223 | 2025 | Ford KING RANCH | 15,878 | $67,920 | $1214 | Stretch | STRETCH |
+| 18 | 245 | 2025 | Ford King Ranch SuperCrew 4x4 | 13,047 | $67,995 | $1215 | Stretch | STRETCH |
+| 19 | 171 | 2026 | Ford King Ranch SuperCrew 4x4 CPO | 3,970 | $70,469 | $1259 | Stretch | STRETCH |
+| 20 | 22 | 2026 | Ford King Ranch 4WD SuperCrew 5.5 Box | 2,248 | $71,979 | $1286 | Stretch | STRETCH |
 
-## Distance cuts from prior Top 6
-- Little Rock Lariat 355 mi → `watch_outside_radius` (Priority A)
-- Austin / New Braunfels RamBox / Corpus / Jacksonville AR — all >200 → dropped from cards
-- Houma KR was only prior in-radius unit — **availability FAIL** (caller)
-
-## Survivors (ranked)
-
-| Rank | Year | Vehicle | Mi | Price | Dist | OTD$/mo | Pill | Verify | Flags |
-|-----:|-----:|---------|---:|------:|-----:|--------:|------|--------|-------|
-| 1 | 2021 | Ram Longhorn Crew 4x4 CPO | 57,753 | $42,222 | 61 | $756 | Stretch | aggregator_instock | CPO, STRETCH |
-| 2 | 2026 | Ram Limited Longhorn Crew 4x4 | 21,956 | $56,895 | 70 | $1017 | Stretch | aggregator_instock | STRETCH |
-| 3 | 2025 | Ford King Ranch SuperCrew 4x4 | 9,487 | $64,895 | 22 | $1160 | Stretch | dealer_ok | two-tone, STRETCH |
-| 4 | 2025 | Ford King Ranch SuperCrew 4x4 | 34,915 | $62,460 | 47 | $1117 | Stretch | aggregator_instock | STRETCH |
-| 5 | 2025 | Ford King Ranch SuperCrew 4x4 | 24,625 | $64,378 | 97 | $1151 | Stretch | aggregator_instock | STRETCH |
-| 6 | 2025 | Ford King Ranch SuperCrew 4x4 | 23,607 | $64,650 | 191 | $1156 | Stretch | dealer_ok | STRETCH |
-| 7 | 2026 | Ford King Ranch SuperCrew 4x4 | 2,293 | $66,435 | 181 | $1187 | Stretch | dealer_secondary | two-tone, STRETCH |
-| 8 | 2026 | Ford King Ranch SuperCrew 4x4 CPO | 3,970 | $70,469 | 171 | $1259 | Stretch | aggregator_instock | CPO, STRETCH |
-| 9 | 2026 | Ford King Ranch SuperCrew 4x4 | 2,248 | $71,979 | 22 | $1286 | Stretch | dealer_ok | STRETCH |
-
-## RamBox hunt
-- Confirmed RamBox in list: **0**
-- No RamBox confirmed among ≤200 mi Longhorn survivors. Prior New Braunfels RamBox outside radius.
-
-## Watch outside radius (NOT in Top 20)
-- `1FTEW1E42LFA68436` (355 mi): PRIORITY A Little Rock Lariat 9,717 mi $42,121 — 355 mi OVER hard 200 bound; watch only
-- `1C6SRFKT8PN656931` (377 mi): New Braunfels Longhorn RamBox — 377 mi OVER hard 200; only confirmed RamBox in prior pool
-- `1C6SRFKT2NN332032` (215 mi): 2022 Longhorn Group 1 Toyota SW Houston $41,225 / 35,455 mi — OSRM 215 mi just over 200
-- `1C6SRFKT0NN360525` (214 mi): 2022 Longhorn Helfman Houston $38,970 / 53,495 mi — OSRM 214 mi over 200
-
-## Caveats
-- Hard distance bound 200 mi (OSRM) from 70535 — no 250 stretch.
-- Pool thin: used/CPO Longhorn+King Ranch ≤60k within 200 mi of Eunice is scarce; Top 9 not 20.
-- Several dealer sites Cloudflare/403 — those cards use Cars.com/AutosToday InStock + call-to-confirm notes.
-- Houma 2020 KR 1FTEW1E43LFA06575 DROPPED — caller confirmed unavailable.
-- Harvey KRs and Greg LeBlanc Houma KR DROPPED after dealer link checks failed.
-- KBB Fair Purchase / Trade-In are ESTIMATES — re-check live on kbb.com.
-- Payments include LA TTL&R Eunice Acadia Parish 10.70% + title $68.50 + license $112 + reg $8.
-- No RamBox confirmed in-radius.
+## Audit removed (not on board)
+- `1FTEW1E43LFA06575`: AutosToday/Terrebonne Houma KR — caller confirmed sold/unavailable — BANNED
+- `1FTFW1E59PFB18543`: Ford of Harvey — VIN absent from dealer inventory
+- `1FTFW1E82PFA54257`: Ford of Harvey — VIN absent from dealer inventory
+- `1FTFW6LD2SFB11515`: Greg LeBlanc Toyota dealer VDP 404
+- `1C6SRFKT9PN551749`: AutosToday 404 during refill
+- `1FTFW6L89TFA80770`: AutosToday Price N/A + notfound.jpg

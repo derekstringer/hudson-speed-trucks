@@ -1,10 +1,10 @@
 {
-  "generated": "2026-10-01T10:45:00-05:00",
+  "generated": "2026-10-01T10:40:00-05:00",
   "zip": "70535",
   "radius_prefer_mi": 200,
-  "radius_stretch_mi": 200,
-  "radius_bound_used_mi": 200,
-  "radius_bound_note": "Hard 200 mi from 70535 (OSRM road miles). No stretch to 250. Pool thin after \u226460k+Longhorn/KR filters \u2014 9 survivors (cap 20); documented.",
+  "radius_stretch_mi": 250,
+  "radius_bound_used_mi": 250,
+  "radius_bound_note": "Prefer \u2264200 mi; allow up to 250 mi OSRM from 70535 to fill Top 16\u201320. Two-tone/RamBox are PRIORITY FLAGS (prefer into board first), not hard filters.",
   "payment_apr": 0.05,
   "payment_months": 72,
   "payment_target": 700,
@@ -37,7 +37,7 @@
   },
   "priority_a": {
     "status": "WATCH_OUTSIDE_RADIUS",
-    "note": "Little Rock Priority A at ~355 mi MUST stay out of Top 20 under hard 200 rule.",
+    "note": "Little Rock Priority A ~355 mi over 250 stretch \u2014 watch only, not on board",
     "vin": "1FTEW1E42LFA68436",
     "price": 42121,
     "miles": 9717,
@@ -46,55 +46,406 @@
   "watch_outside_radius": [
     {
       "vin": "1FTEW1E42LFA68436",
-      "note": "PRIORITY A Little Rock Lariat 9,717 mi $42,121 \u2014 355 mi OVER hard 200 bound; watch only",
       "distance_mi": 355,
-      "url": "https://www.crainhyundailittlerock.com/used-Little+Rock-2020-Ford-F+150-Lariat-1FTEW1E42LFA68436"
+      "note": "PRIORITY A Little Rock Lariat \u2014 outside 250"
     },
     {
       "vin": "1C6SRFKT8PN656931",
-      "note": "New Braunfels Longhorn RamBox \u2014 377 mi OVER hard 200; only confirmed RamBox in prior pool",
-      "distance_mi": 377
-    },
-    {
-      "vin": "1C6SRFKT2NN332032",
-      "note": "2022 Longhorn Group 1 Toyota SW Houston $41,225 / 35,455 mi \u2014 OSRM 215 mi just over 200",
-      "distance_mi": 215
-    },
-    {
-      "vin": "1C6SRFKT0NN360525",
-      "note": "2022 Longhorn Helfman Houston $38,970 / 53,495 mi \u2014 OSRM 214 mi over 200",
-      "distance_mi": 214
+      "distance_mi": 377,
+      "note": "New Braunfels Longhorn RamBox \u2014 outside 250"
     }
   ],
   "rambox_hunt": {
     "confirmed_in_list": 0,
-    "note": "No RamBox confirmed among \u2264200 mi Longhorn survivors. Prior New Braunfels RamBox outside radius."
+    "note": "No RamBox confirmed with options/photos among \u2264250 mi survivors; badge will show if found. Two-tone priority flags present on board."
   },
   "data_quality": {
     "hard_filter_max_miles": 60000,
-    "hard_filter_max_distance_mi": 200,
-    "survivor_count": 9,
-    "stretch_count": 9,
-    "dealer_verified_count": 3,
-    "distance_cuts_from_prior6": 5,
-    "availability_drops": 4,
-    "refill_adds": 8
+    "hard_filter_max_distance_mi": 250,
+    "prefer_distance_mi": 200,
+    "survivor_count": 20,
+    "stretch_count": 19,
+    "two_tone_count": 4,
+    "rambox_count": 0,
+    "longhorn_count": 6,
+    "audit_pass_count": 20,
+    "audit_fail_removed": [
+      "1FTEW1E43LFA06575",
+      "1FTFW1E59PFB18543",
+      "1FTFW1E82PFA54257",
+      "1FTFW6LD2SFB11515",
+      "1C6SRFKT9PN551749",
+      "1FTFW6L89TFA80770"
+    ]
+  },
+  "audit": {
+    "ran_at": "2026-10-01T10:40:00-05:00",
+    "method": "HTTP check of dealer + Cars.com + AutosToday URLs; sold/unavailable regex; VIN/price presence on dealer pages when reachable",
+    "board_results": [
+      {
+        "vin": "1C6SRFKT0NN360525",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT0NN360525"
+      },
+      {
+        "vin": "1C6SRFKT2NN332032",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT2NN332032"
+      },
+      {
+        "vin": "1C6SRFKT6MN666448",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.hixsonfordalex.com/used-inventory/index.htm"
+      },
+      {
+        "vin": "1C6SRFKT5MN547001",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT5MN547001"
+      },
+      {
+        "vin": "1C6SRFKT3RN172233",
+        "result": "PASS",
+        "verify": "dealer_ok",
+        "note": "Toyota of Katy dealer page HTTP 200, no sold signal",
+        "best_url": "https://www.toyotaofkaty.com/used-Katy-2024-RAM-1500-Longhorn-1C6SRFKT3RN172233"
+      },
+      {
+        "vin": "1C6SRFHP3TN183380",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.cars.com/dealers/6021559/autoplex-sulphur/inventory/"
+      },
+      {
+        "vin": "1FTFW6LD0RFA98354",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0RFA98354"
+      },
+      {
+        "vin": "1FTFW6LD0SFB84981",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0SFB84981"
+      },
+      {
+        "vin": "1FTFW6LD4SFA33089",
+        "result": "PASS",
+        "verify": "dealer_ok",
+        "note": "Sterling Ford dealer VDP verified",
+        "best_url": "https://www.sterlingfordopelousas.com/used-Opelousas-2025-Ford-F+150-King+Ranch-1FTFW6LD4SFA33089"
+      },
+      {
+        "vin": "1FTFW6L81TFA53708",
+        "result": "PASS",
+        "verify": "dealer_secondary",
+        "note": "DealerRater live from Community Honda; dealer site CF-blocked",
+        "best_url": "https://www.dealerrater.com/classifieds/2026-Ford-F_150-ad-1FTFW6L81TFA53708-38710/"
+      },
+      {
+        "vin": "1FTEW1E56LFA81652",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E56LFA81652"
+      },
+      {
+        "vin": "1FTFW6L84RFA81365",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L84RFA81365"
+      },
+      {
+        "vin": "1FTFW6LD5SFA30797",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.mendozaford.com/all-inventory/index.htm"
+      },
+      {
+        "vin": "1FTFW6L83SFB42114",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L83SFB42114"
+      },
+      {
+        "vin": "1FTFW6LD2SFA92500",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.geauxcdjr.com/inventory/"
+      },
+      {
+        "vin": "1FTFW6LD7SFA57161",
+        "result": "PASS",
+        "verify": "dealer_ok",
+        "note": "Dealer VDP live with VIN+price; sold-text was inventory boilerplate only (FALSE POSITIVE overridden)",
+        "best_url": "https://www.randallreedsplanetford.com/vehicle/1FTFW6LD7SFA57161/Used--2025--Ford--F--150--Truck_Hybrid----Humble--TX/"
+      },
+      {
+        "vin": "1FTFW6LD4SFB59386",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFB59386"
+      },
+      {
+        "vin": "1FTFW6L82SFB56277",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L82SFB56277"
+      },
+      {
+        "vin": "1FTFW6LDXTFA43272",
+        "result": "PASS",
+        "verify": "aggregator_instock",
+        "note": "Live AutosToday InStock; Cars.com often 403 from box",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272"
+      },
+      {
+        "vin": "1FTFW6LD9TFB07494",
+        "result": "PASS",
+        "verify": "dealer_ok",
+        "note": "Sterling Ford dealer VDP verified",
+        "best_url": "https://www.sterlingfordopelousas.com/used-Opelousas-2026-Ford-F+150-King+Ranch-1FTFW6LD9TFB07494"
+      }
+    ],
+    "removed_before_or_during_audit": [
+      {
+        "vin": "1FTEW1E43LFA06575",
+        "result": "FAIL",
+        "reason": "AutosToday/Terrebonne Houma KR \u2014 caller confirmed sold/unavailable \u2014 BANNED"
+      },
+      {
+        "vin": "1FTFW1E59PFB18543",
+        "result": "FAIL",
+        "reason": "Ford of Harvey \u2014 VIN absent from dealer inventory"
+      },
+      {
+        "vin": "1FTFW1E82PFA54257",
+        "result": "FAIL",
+        "reason": "Ford of Harvey \u2014 VIN absent from dealer inventory"
+      },
+      {
+        "vin": "1FTFW6LD2SFB11515",
+        "result": "FAIL",
+        "reason": "Greg LeBlanc Toyota dealer VDP 404"
+      },
+      {
+        "vin": "1C6SRFKT9PN551749",
+        "result": "FAIL",
+        "reason": "AutosToday 404 during refill"
+      },
+      {
+        "vin": "1FTFW6L89TFA80770",
+        "result": "FAIL",
+        "reason": "AutosToday Price N/A + notfound.jpg"
+      }
+    ],
+    "notes": [
+      "Cars.com VDPs often HTTP 403 from audit box \u2014 not treated as delisted if AutosToday InStock 200",
+      "Planet Ford 1FTFW6LD7SFA57161 matched inventory boilerplate sold text \u2014 overridden after manual confirm VIN+price still on dealer VDP",
+      "1FTEW1E43LFA06575 Houma KR permanently banned (caller confirmed unavailable)"
+    ]
   },
   "caveats": [
-    "Hard distance bound 200 mi (OSRM) from 70535 \u2014 no 250 stretch.",
-    "Pool thin: used/CPO Longhorn+King Ranch \u226460k within 200 mi of Eunice is scarce; Top 9 not 20.",
-    "Several dealer sites Cloudflare/403 \u2014 those cards use Cars.com/AutosToday InStock + call-to-confirm notes.",
-    "Houma 2020 KR 1FTEW1E43LFA06575 DROPPED \u2014 caller confirmed unavailable.",
-    "Harvey KRs and Greg LeBlanc Houma KR DROPPED after dealer link checks failed.",
-    "KBB Fair Purchase / Trade-In are ESTIMATES \u2014 re-check live on kbb.com.",
-    "Payments include LA TTL&R Eunice Acadia Parish 10.70% + title $68.50 + license $112 + reg $8.",
-    "No RamBox confirmed in-radius."
+    "Bound: prefer \u2264200, allow \u2264250 mi OSRM from 70535.",
+    "Two-tone and RamBox are PRIORITY FLAGS (prefer into list); not hard inclusion filters.",
+    "Ranking: Longhorns first (two-tone LH first), then King Ranch (two-tone KR first), then payment/miles.",
+    "TTL&R: Acadia Parish Eunice 10.70% + title $68.50 + license $112 + reg $8 @ 5%/72 OTD.",
+    "KBB values are ESTIMATES \u2014 re-verify on kbb.com before offers.",
+    "Dedicated audit pass completed before this deploy \u2014 see audit block.",
+    "Houma AutosToday KR must never reappear (confirmed sold)."
   ],
-  "count": 9,
+  "count": 20,
   "trucks": [
     {
       "rank": 1,
-      "rank_reason": "Longhorn rank priority; CPO; OTD pay $756; 61 mi; 57,753 mi; STRETCH",
+      "rank_reason": "Longhorn; OTD $698/mo; 214 mi; 53,495 mi",
+      "priorityFind": false,
+      "year": 2022,
+      "make": "Ram",
+      "model": "1500",
+      "trim": "Longhorn Crew 4x4",
+      "miles": 53495,
+      "price": 38970,
+      "asking_price": 38970,
+      "payment5_72": 697.8,
+      "payment5_72_price_only": 627.61,
+      "payment_includes_ttlr": true,
+      "distance_mi": 214,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1C6SRFKT0NN360525",
+      "photos": [],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT0NN360525",
+        "carscom": "https://www.cars.com/vehicledetail/ea3dcb82-c729-42b1-b743-e25a85bc4372/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT0NN360525",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT0NN360525",
+        "carscom": "https://www.cars.com/vehicledetail/ea3dcb82-c729-42b1-b743-e25a85bc4372/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT0NN360525",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Helfman CDJR",
+        "address": "Houston, TX 77024",
+        "phone": null
+      },
+      "dealer_name": "Helfman CDJR",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 40920,
+      "kbbTradeIn": 36009,
+      "book_purchase": 40920,
+      "book_wholesale_proxy": 36009,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 0.952,
+      "dealPill": "Fair",
+      "deal_score": 1.6498,
+      "id": "lh-360525",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "Crew",
+      "bed": "5.7 ft",
+      "color": "white",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 38970,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 4169.79,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 43328.29,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 697.8,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip",
+        "No photo CDN on SRP \u2014 open listing for photos"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 2,
+      "rank_reason": "Longhorn; OTD $738/mo; 215 mi; 35,455 mi",
+      "priorityFind": false,
+      "year": 2022,
+      "make": "Ram",
+      "model": "1500",
+      "trim": "Longhorn Crew 4x4",
+      "miles": 35455,
+      "price": 41225,
+      "asking_price": 41225,
+      "payment5_72": 738.0,
+      "payment5_72_price_only": 663.93,
+      "payment_includes_ttlr": true,
+      "distance_mi": 215,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1C6SRFKT2NN332032",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/31af55aa-ac33-5cff-8bf9-0eade81083a9/e4441145-0b08-4f6a-bbd5-7f1bd0a6822d/6pyx6ZCoDIK_5U7OYIzWUgpzZCI.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT2NN332032",
+        "carscom": "https://www.cars.com/vehicledetail/6a5363c4-3dea-4e00-be0a-0383271a6611/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT2NN332032",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT2NN332032",
+        "carscom": "https://www.cars.com/vehicledetail/6a5363c4-3dea-4e00-be0a-0383271a6611/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT2NN332032",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Group 1 Toyota Southwest Houston",
+        "address": "Houston, TX 77074",
+        "phone": null
+      },
+      "dealer_name": "Group 1 Toyota Southwest Houston",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 42363,
+      "kbbTradeIn": 37279,
+      "book_purchase": 42363,
+      "book_wholesale_proxy": 37279,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 0.973,
+      "dealPill": "Fair",
+      "deal_score": 1.711,
+      "id": "lh-332032",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "Crew",
+      "bed": "5.7 ft",
+      "color": "red",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 41225,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 4411.07,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 45824.57,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 738.0,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": false
+    },
+    {
+      "rank": 3,
+      "rank_reason": "Longhorn; OTD $756/mo; 61 mi; 57,753 mi",
       "priorityFind": false,
       "year": 2021,
       "make": "Ram",
@@ -116,12 +467,14 @@
       "listingUrls": {
         "dealer": "https://www.hixsonfordalex.com/used-inventory/index.htm",
         "carscom": "https://www.cars.com/vehicledetail/b8cc07a3-4077-4029-b79a-b7030846e965/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT6MN666448"
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT6MN666448",
+        "cargurus": null
       },
       "links": {
         "dealer": "https://www.hixsonfordalex.com/used-inventory/index.htm",
         "carscom": "https://www.cars.com/vehicledetail/b8cc07a3-4077-4029-b79a-b7030846e965/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT6MN666448"
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT6MN666448",
+        "cargurus": null
       },
       "dealer": {
         "name": "Hixson Ford of Alexandria",
@@ -130,33 +483,28 @@
       },
       "dealer_name": "Hixson Ford of Alexandria",
       "advertisedOptions": [
-        "CPO",
         "4x4",
-        "Crew Cab",
-        "5.7 ft bed"
+        "CPO"
       ],
       "options_highlighted": [
-        "CPO",
-        "4x4",
-        "Crew Cab",
-        "5.7 ft bed"
+        "4x4"
       ],
-      "kbbFairPurchase": 40500,
-      "kbbTradeIn": 35500,
-      "book_purchase": 40500,
-      "book_wholesale_proxy": 35500,
+      "kbbFairPurchase": 38579,
+      "kbbTradeIn": 33949,
+      "book_purchase": 38579,
+      "book_wholesale_proxy": 33949,
       "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.043,
+      "ltv": 1.094,
       "dealPill": "Stretch",
-      "deal_score": 1.7988,
-      "id": "alex-lh-666448",
+      "deal_score": 1.8498,
+      "id": "lh-666448",
       "condition": "Good",
       "stock_number": null,
       "drivetrain": "4x4",
       "cab": "Crew",
       "bed": "5.7 ft",
-      "color": "White",
-      "notes": "CPO Longhorn within 200 mi. Dealer site Cloudflare-blocked on refresh; Cars.com+AutosToday InStock 2026-10-01 \u2014 call to confirm. | STRETCH (price/miles/payment).",
+      "color": "white",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
       "still_for_sale": true,
       "date_seen": "2026-10-01",
       "ttlr": {
@@ -174,15 +522,186 @@
         "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
       },
       "missingDataNotes": [
-        "Dealer VDP Cloudflare-blocked \u2014 confirm still for sale with Hixson Ford Alexandria before trip",
-        "Photos not on Cars.com SRP thumb"
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip",
+        "No photo CDN on SRP \u2014 open listing for photos"
       ],
       "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
       "is_stretch": true
     },
     {
-      "rank": 2,
-      "rank_reason": "Longhorn rank priority; OTD pay $1017; 70 mi; 21,956 mi; STRETCH",
+      "rank": 4,
+      "rank_reason": "Longhorn; OTD $787/mo; 229 mi; 34,976 mi",
+      "priorityFind": false,
+      "year": 2021,
+      "make": "Ram",
+      "model": "1500",
+      "trim": "Longhorn Crew 4x4",
+      "miles": 34976,
+      "price": 43998,
+      "asking_price": 43998,
+      "payment5_72": 787.44,
+      "payment5_72_price_only": 708.58,
+      "payment_includes_ttlr": true,
+      "distance_mi": 229,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1C6SRFKT5MN547001",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/dc2b6f88-0811-5afa-9ab0-1c34b0b7f4ff/677a1311-d50c-4791-b130-5f83773ffd5a/MT0m6fmGCNjam48Bxmm34M5o2mM.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT5MN547001",
+        "carscom": "https://www.cars.com/vehicledetail/40a5c31c-92f0-4ec3-841b-279d0be285d7/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT5MN547001",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT5MN547001",
+        "carscom": "https://www.cars.com/vehicledetail/40a5c31c-92f0-4ec3-841b-279d0be285d7/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT5MN547001",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "CarMax Houston Katy Freeway",
+        "address": "Katy, TX 77449",
+        "phone": null
+      },
+      "dealer_name": "CarMax Houston Katy Freeway",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 40401,
+      "kbbTradeIn": 35552,
+      "book_purchase": 40401,
+      "book_wholesale_proxy": 35552,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.089,
+      "dealPill": "Stretch",
+      "deal_score": 1.8764,
+      "id": "lh-547001",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "Crew",
+      "bed": "5.7 ft",
+      "color": "gray",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 43998,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 4707.79,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 48894.29,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 787.44,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 5,
+      "rank_reason": "Longhorn; OTD $920/mo; 228 mi; 12,360 mi",
+      "priorityFind": false,
+      "year": 2024,
+      "make": "Ram",
+      "model": "1500",
+      "trim": "Longhorn Crew 4x4",
+      "miles": 12360,
+      "price": 51420,
+      "asking_price": 51420,
+      "payment5_72": 919.76,
+      "payment5_72_price_only": 828.12,
+      "payment_includes_ttlr": true,
+      "distance_mi": 228,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1C6SRFKT3RN172233",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/6ae25e17-b187-5e43-9bfd-d63107bdb98d/6163c3d5-6ed5-4915-a96e-900391b0e8b2/tQ7akeU5JnSnnVzXk-BzFnRRxHQ.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.toyotaofkaty.com/used-Katy-2024-RAM-1500-Longhorn-1C6SRFKT3RN172233",
+        "carscom": "https://www.cars.com/vehicledetail/15e648be-2c27-4232-9405-5959bdcd87ce/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT3RN172233",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.toyotaofkaty.com/used-Katy-2024-RAM-1500-Longhorn-1C6SRFKT3RN172233",
+        "carscom": "https://www.cars.com/vehicledetail/15e648be-2c27-4232-9405-5959bdcd87ce/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT3RN172233",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Toyota of Katy",
+        "address": "Katy, TX 77450",
+        "phone": null
+      },
+      "dealer_name": "Toyota of Katy",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 50211,
+      "kbbTradeIn": 44185,
+      "book_purchase": 50211,
+      "book_wholesale_proxy": 44185,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.024,
+      "dealPill": "Stretch",
+      "deal_score": 1.9438,
+      "id": "lh-172233",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "Crew",
+      "bed": "5.7 ft",
+      "color": "black",
+      "notes": "Toyota of Katy dealer page HTTP 200, no sold signal. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 51420,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 5501.94,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 57110.44,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 919.76,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [],
+      "availability_verify": "dealer_ok",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 6,
+      "rank_reason": "Longhorn; OTD $1017/mo; 70 mi; 21,956 mi",
       "priorityFind": false,
       "year": 2026,
       "make": "Ram",
@@ -204,45 +723,43 @@
       "listingUrls": {
         "dealer": "https://www.cars.com/dealers/6021559/autoplex-sulphur/inventory/",
         "carscom": "https://www.cars.com/vehicledetail/40b4dc8d-c9ab-4c7e-a8f6-71856ae12018/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFHP3TN183380"
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFHP3TN183380",
+        "cargurus": null
       },
       "links": {
         "dealer": "https://www.cars.com/dealers/6021559/autoplex-sulphur/inventory/",
         "carscom": "https://www.cars.com/vehicledetail/40b4dc8d-c9ab-4c7e-a8f6-71856ae12018/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFHP3TN183380"
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFHP3TN183380",
+        "cargurus": null
       },
       "dealer": {
-        "name": "Autoplex Sulphur (Autoplex 2000)",
+        "name": "Autoplex Sulphur",
         "address": "2910 East Napoleon St, Sulphur, LA 70663",
         "phone": "888-810-0816"
       },
       "dealer_name": "Autoplex Sulphur",
       "advertisedOptions": [
-        "4x4",
-        "Crew Cab",
-        "Limited Longhorn"
+        "4x4"
       ],
       "options_highlighted": [
-        "4x4",
-        "Crew Cab",
-        "Limited Longhorn"
+        "4x4"
       ],
-      "kbbFairPurchase": 55000,
-      "kbbTradeIn": 50000,
-      "book_purchase": 55000,
-      "book_wholesale_proxy": 50000,
+      "kbbFairPurchase": 56443,
+      "kbbTradeIn": 49669,
+      "book_purchase": 56443,
+      "book_wholesale_proxy": 49669,
       "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.034,
+      "ltv": 1.008,
       "dealPill": "Stretch",
-      "deal_score": 2.0514,
-      "id": "sulphur-lh-183380",
+      "deal_score": 2.0254,
+      "id": "lh-183380",
       "condition": "Good",
       "stock_number": null,
       "drivetrain": "4x4",
       "cab": "Crew",
       "bed": "5.7 ft",
-      "color": "Gray",
-      "notes": "Used 2026 Limited Longhorn. RamBox not confirmed on aggregator options. Dealer site blocked; AT InStock \u2014 call Autoplex. | STRETCH (price/miles/payment).",
+      "color": "gray",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
       "still_for_sale": true,
       "date_seen": "2026-10-01",
       "ttlr": {
@@ -260,15 +777,192 @@
         "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
       },
       "missingDataNotes": [
-        "RamBox not confirmed \u2014 hunt on dealer photos",
-        "Dealer site blocked from box; confirm availability by phone"
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip",
+        "No photo CDN on SRP \u2014 open listing for photos"
       ],
       "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
       "is_stretch": true
     },
     {
-      "rank": 3,
-      "rank_reason": "two-tone; OTD pay $1160; 22 mi; 9,487 mi; STRETCH",
+      "rank": 7,
+      "rank_reason": "King Ranch; two-tone priority flag; OTD $989/mo; 201 mi; 34,364 mi",
+      "priorityFind": false,
+      "year": 2024,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 34364,
+      "price": 55297,
+      "asking_price": 55297,
+      "payment5_72": 988.88,
+      "payment5_72_price_only": 890.55,
+      "payment_includes_ttlr": true,
+      "distance_mi": 201,
+      "twoTone": true,
+      "two_tone": true,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6LD0RFA98354",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/0f628b08-80d3-56dd-ba03-3842f3428f74/f152bc47-79d4-414a-a783-32c0139f4dc9/1MpGahCJiOGd19aE8yK27JEGJOk.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0RFA98354",
+        "carscom": "https://www.cars.com/vehicledetail/a97f647c-6474-4632-a6fa-1c60abdb7c01/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0RFA98354",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0RFA98354",
+        "carscom": "https://www.cars.com/vehicledetail/a97f647c-6474-4632-a6fa-1c60abdb7c01/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0RFA98354",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "EchoPark Automotive Houston",
+        "address": "Houston, TX 77090",
+        "phone": null
+      },
+      "dealer_name": "EchoPark Automotive Houston",
+      "advertisedOptions": [
+        "4x4",
+        "Two-tone"
+      ],
+      "options_highlighted": [
+        "4x4",
+        "Two-tone"
+      ],
+      "kbbFairPurchase": 55450,
+      "kbbTradeIn": 48796,
+      "book_purchase": 55450,
+      "book_wholesale_proxy": 48796,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 0.997,
+      "dealPill": "Stretch",
+      "deal_score": 1.9859,
+      "id": "kr-a98354",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "blue",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. Two-tone priority flag. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 55297,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 5916.78,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 61402.28,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 988.88,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 8,
+      "rank_reason": "King Ranch; two-tone priority flag; OTD $1107/mo; 201 mi; 5,681 mi",
+      "priorityFind": false,
+      "year": 2025,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 5681,
+      "price": 61910,
+      "asking_price": 61910,
+      "payment5_72": 1106.78,
+      "payment5_72_price_only": 997.06,
+      "payment_includes_ttlr": true,
+      "distance_mi": 201,
+      "twoTone": true,
+      "two_tone": true,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6LD0SFB84981",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/5996fd14-0a06-5cb6-a75f-275f99a95b85/5d929672-7bad-48ca-9e78-d9bfd8c76723/2SNUjRboGlM4jjULnd5HHnFf7Z0.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0SFB84981",
+        "carscom": "https://www.cars.com/vehicledetail/a98238c1-c80c-40c0-8cb8-e12b447c9f69/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0SFB84981",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0SFB84981",
+        "carscom": "https://www.cars.com/vehicledetail/a98238c1-c80c-40c0-8cb8-e12b447c9f69/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0SFB84981",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Mercedes-Benz of Houston North",
+        "address": "Houston, TX 77090",
+        "phone": null
+      },
+      "dealer_name": "Mercedes-Benz of Houston North",
+      "advertisedOptions": [
+        "4x4",
+        "Two-tone"
+      ],
+      "options_highlighted": [
+        "4x4",
+        "Two-tone"
+      ],
+      "kbbFairPurchase": 62745,
+      "kbbTradeIn": 55215,
+      "book_purchase": 62745,
+      "book_wholesale_proxy": 55215,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 0.987,
+      "dealPill": "Stretch",
+      "deal_score": 2.0938,
+      "id": "kr-b84981",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "red",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. Two-tone priority flag. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 61910,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 6624.37,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 68722.87,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 1106.78,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 9,
+      "rank_reason": "King Ranch; two-tone priority flag; OTD $1160/mo; 22 mi; 9,487 mi",
       "priorityFind": false,
       "year": 2025,
       "make": "Ford",
@@ -292,12 +986,14 @@
       "listingUrls": {
         "dealer": "https://www.sterlingfordopelousas.com/used-Opelousas-2025-Ford-F+150-King+Ranch-1FTFW6LD4SFA33089",
         "carscom": "https://www.cars.com/vehicledetail/3dbab298-e7bf-420c-aebb-60660e166ece/",
-        "autostoday": null
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFA33089",
+        "cargurus": null
       },
       "links": {
         "dealer": "https://www.sterlingfordopelousas.com/used-Opelousas-2025-Ford-F+150-King+Ranch-1FTFW6LD4SFA33089",
         "carscom": "https://www.cars.com/vehicledetail/3dbab298-e7bf-420c-aebb-60660e166ece/",
-        "autostoday": null
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFA33089",
+        "cargurus": null
       },
       "dealer": {
         "name": "Sterling Ford",
@@ -306,37 +1002,29 @@
       },
       "dealer_name": "Sterling Ford",
       "advertisedOptions": [
-        "PowerBoost Hybrid",
-        "FX4 Off-Road",
-        "B&O Unleashed",
-        "Panoramic roof",
-        "Tough Bed",
-        "4x4"
+        "4x4",
+        "Two-tone"
       ],
       "options_highlighted": [
-        "PowerBoost Hybrid",
-        "FX4 Off-Road",
-        "B&O Unleashed",
-        "Panoramic roof",
-        "Tough Bed",
-        "4x4"
+        "4x4",
+        "Two-tone"
       ],
-      "kbbFairPurchase": 62000,
-      "kbbTradeIn": 57500,
-      "book_purchase": 62000,
-      "book_wholesale_proxy": 57500,
+      "kbbFairPurchase": 62441,
+      "kbbTradeIn": 54948,
+      "book_purchase": 62441,
+      "book_wholesale_proxy": 54948,
       "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.047,
+      "ltv": 1.039,
       "dealPill": "Stretch",
-      "deal_score": 2.207,
-      "id": "opelousas-kr-33089",
+      "deal_score": 2.199,
+      "id": "kr-a33089",
       "condition": "Good",
-      "stock_number": "F10773",
+      "stock_number": null,
       "drivetrain": "4x4",
       "cab": "SuperCrew",
       "bed": "5.5 ft",
-      "color": "Antimatter Blue / Marsh Gray",
-      "notes": "DEALER VERIFIED available. Two-tone Antimatter Blue/Marsh Gray. PowerBoost hybrid. FX4. Closest KR. | STRETCH (price/miles/payment).",
+      "color": "blue",
+      "notes": "Sterling Ford dealer VDP verified. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. Two-tone priority flag. ",
       "still_for_sale": true,
       "date_seen": "2026-10-01",
       "ttlr": {
@@ -355,276 +1043,12 @@
       },
       "missingDataNotes": [],
       "availability_verify": "dealer_ok",
+      "audit_result": "PASS",
       "is_stretch": true
     },
     {
-      "rank": 4,
-      "rank_reason": "OTD pay $1117; 47 mi; 34,915 mi; STRETCH",
-      "priorityFind": false,
-      "year": 2025,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4",
-      "miles": 34915,
-      "price": 62460,
-      "asking_price": 62460,
-      "payment5_72": 1116.58,
-      "payment5_72_price_only": 1005.91,
-      "payment_includes_ttlr": true,
-      "distance_mi": 47,
-      "twoTone": false,
-      "two_tone": false,
-      "hasRamBox": false,
-      "rambox": false,
-      "vin": "1FTFW6LD5SFA30797",
-      "photos": [
-        "https://platform.cstatic-images.com/in/v2/cdbb93ff-746e-5f8c-b0f0-94050be0134b/e9dfd3ac-0ca3-4457-8b6b-b16d229b384b/voEBxBCSDeO93Wah4HWsMs06gfY.jpg"
-      ],
-      "listingUrls": {
-        "dealer": "https://www.mendozaford.com/all-inventory/index.htm",
-        "carscom": "https://www.cars.com/vehicledetail/61060bd1-a768-4853-bcec-96da57ffd30d/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD5SFA30797"
-      },
-      "links": {
-        "dealer": "https://www.mendozaford.com/all-inventory/index.htm",
-        "carscom": "https://www.cars.com/vehicledetail/61060bd1-a768-4853-bcec-96da57ffd30d/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD5SFA30797"
-      },
-      "dealer": {
-        "name": "Mendoza Ford",
-        "address": "7951 Maurice Ave, Maurice, LA 70555",
-        "phone": "337-740-1000"
-      },
-      "dealer_name": "Mendoza Ford",
-      "advertisedOptions": [
-        "4x4",
-        "King Ranch",
-        "SuperCrew"
-      ],
-      "options_highlighted": [
-        "4x4",
-        "King Ranch",
-        "SuperCrew"
-      ],
-      "kbbFairPurchase": 59000,
-      "kbbTradeIn": 54000,
-      "book_purchase": 59000,
-      "book_wholesale_proxy": 54000,
-      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.059,
-      "dealPill": "Stretch",
-      "deal_score": 2.1756,
-      "id": "maurice-kr-30797",
-      "condition": "Good",
-      "stock_number": null,
-      "drivetrain": "4x4",
-      "cab": "SuperCrew",
-      "bed": "5.5 ft",
-      "color": "White",
-      "notes": "AT InStock @ Mendoza Ford Maurice. Dealer VDP Cloudflare-blocked \u2014 call to confirm. | STRETCH (price/miles/payment).",
-      "still_for_sale": true,
-      "date_seen": "2026-10-01",
-      "ttlr": {
-        "asking_price": 62460,
-        "sales_tax_rate": 0.107,
-        "sales_tax_rate_pct": "10.70%",
-        "sales_tax_amount": 6683.22,
-        "title_fee": 68.5,
-        "license_fee": 112.0,
-        "registration_fee": 8.0,
-        "amount_financed": 69331.72,
-        "apr": 0.05,
-        "term_months": 72,
-        "monthly_payment": 1116.58,
-        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
-      },
-      "missingDataNotes": [
-        "Dealer VDP blocked \u2014 call Mendoza Ford before trip"
-      ],
-      "availability_verify": "aggregator_instock",
-      "is_stretch": true
-    },
-    {
-      "rank": 5,
-      "rank_reason": "OTD pay $1151; 97 mi; 24,625 mi; STRETCH",
-      "priorityFind": false,
-      "year": 2025,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4",
-      "miles": 24625,
-      "price": 64378,
-      "asking_price": 64378,
-      "payment5_72": 1150.78,
-      "payment5_72_price_only": 1036.8,
-      "payment_includes_ttlr": true,
-      "distance_mi": 97,
-      "twoTone": false,
-      "two_tone": false,
-      "hasRamBox": false,
-      "rambox": false,
-      "vin": "1FTFW6LD2SFA92500",
-      "photos": [
-        "https://platform.cstatic-images.com/in/v2/4497031f-652a-423f-b070-22562b4666c5/4ca84c30-eb1d-4816-9198-f8a0a2213315/EaiDoV-488w2uCbRYZeIqn8mKjU.jpg"
-      ],
-      "listingUrls": {
-        "dealer": "https://www.geauxcdjr.com/inventory/",
-        "carscom": "https://www.cars.com/vehicledetail/60c8772d-d9c6-4adc-b082-8e1436cd02b6/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD2SFA92500"
-      },
-      "links": {
-        "dealer": "https://www.geauxcdjr.com/inventory/",
-        "carscom": "https://www.cars.com/vehicledetail/60c8772d-d9c6-4adc-b082-8e1436cd02b6/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD2SFA92500"
-      },
-      "dealer": {
-        "name": "Geaux CDJR Denham Springs",
-        "address": "2590 Range Park Drive, Denham Springs, LA 70726",
-        "phone": null
-      },
-      "dealer_name": "Geaux CDJR Denham Springs",
-      "advertisedOptions": [
-        "PowerBoost Hybrid",
-        "FX4",
-        "601A High",
-        "4x4"
-      ],
-      "options_highlighted": [
-        "PowerBoost Hybrid",
-        "FX4",
-        "601A High",
-        "4x4"
-      ],
-      "kbbFairPurchase": 60000,
-      "kbbTradeIn": 55000,
-      "book_purchase": 60000,
-      "book_wholesale_proxy": 55000,
-      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.073,
-      "dealPill": "Stretch",
-      "deal_score": 2.2238,
-      "id": "denham-kr-92500",
-      "condition": "Good",
-      "stock_number": "P22202",
-      "drivetrain": "4x4",
-      "cab": "SuperCrew",
-      "bed": "5.5 ft",
-      "color": "Star White",
-      "notes": "AT InStock Denham Springs. Geaux dealer site Cloudflare-blocked. | STRETCH (price/miles/payment).",
-      "still_for_sale": true,
-      "date_seen": "2026-10-01",
-      "ttlr": {
-        "asking_price": 64378,
-        "sales_tax_rate": 0.107,
-        "sales_tax_rate_pct": "10.70%",
-        "sales_tax_amount": 6888.45,
-        "title_fee": 68.5,
-        "license_fee": 112.0,
-        "registration_fee": 8.0,
-        "amount_financed": 71454.95,
-        "apr": 0.05,
-        "term_months": 72,
-        "monthly_payment": 1150.78,
-        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
-      },
-      "missingDataNotes": [
-        "Dealer site Cloudflare-blocked \u2014 call Geaux CDJR to confirm"
-      ],
-      "availability_verify": "aggregator_instock",
-      "is_stretch": true
-    },
-    {
-      "rank": 6,
-      "rank_reason": "OTD pay $1156; 191 mi; 23,607 mi; STRETCH",
-      "priorityFind": false,
-      "year": 2025,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4",
-      "miles": 23607,
-      "price": 64650,
-      "asking_price": 64650,
-      "payment5_72": 1155.63,
-      "payment5_72_price_only": 1041.18,
-      "payment_includes_ttlr": true,
-      "distance_mi": 191,
-      "twoTone": false,
-      "two_tone": false,
-      "hasRamBox": false,
-      "rambox": false,
-      "vin": "1FTFW6LD7SFA57161",
-      "photos": [
-        "https://platform.cstatic-images.com/in/v2/68c2ba79-384c-55a5-a826-757b61b5bc93/d0a57c79-6f89-4caa-abd8-d54c51c3a673/f8OwDFoec5Blx9IyBoGPjkFInDc.jpg"
-      ],
-      "listingUrls": {
-        "dealer": "https://www.randallreedsplanetford.com/vehicle/1FTFW6LD7SFA57161/Used--2025--Ford--F--150--Truck_Hybrid----Humble--TX/",
-        "carscom": "https://www.cars.com/vehicledetail/3f8d35a6-0286-4be6-b1c9-e0d9cd4f1b91/",
-        "autostoday": null
-      },
-      "links": {
-        "dealer": "https://www.randallreedsplanetford.com/vehicle/1FTFW6LD7SFA57161/Used--2025--Ford--F--150--Truck_Hybrid----Humble--TX/",
-        "carscom": "https://www.cars.com/vehicledetail/3f8d35a6-0286-4be6-b1c9-e0d9cd4f1b91/",
-        "autostoday": null
-      },
-      "dealer": {
-        "name": "Randall Reed's Planet Ford",
-        "address": "19000 Eastex Frwy, Humble, TX 77338",
-        "phone": "281-319-9600"
-      },
-      "dealer_name": "Randall Reed's Planet Ford",
-      "advertisedOptions": [
-        "PowerBoost Hybrid",
-        "FX4 Off-Road",
-        "B&O 14-speaker",
-        "Moonroof",
-        "4x4"
-      ],
-      "options_highlighted": [
-        "PowerBoost Hybrid",
-        "FX4 Off-Road",
-        "B&O 14-speaker",
-        "Moonroof",
-        "4x4"
-      ],
-      "kbbFairPurchase": 60000,
-      "kbbTradeIn": 55000,
-      "book_purchase": 60000,
-      "book_wholesale_proxy": 55000,
-      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.077,
-      "dealPill": "Stretch",
-      "deal_score": 2.2326,
-      "id": "humble-kr-57161",
-      "condition": "Good",
-      "stock_number": "T5923A",
-      "drivetrain": "4x4",
-      "cab": "SuperCrew",
-      "bed": "5.5 ft",
-      "color": "Agate Black Metallic",
-      "notes": "DEALER VERIFIED available @ Planet Ford Humble. PowerBoost hybrid FX4. OSRM 191 mi \u2264200 hard bound. | STRETCH (price/miles/payment).",
-      "still_for_sale": true,
-      "date_seen": "2026-10-01",
-      "ttlr": {
-        "asking_price": 64650,
-        "sales_tax_rate": 0.107,
-        "sales_tax_rate_pct": "10.70%",
-        "sales_tax_amount": 6917.55,
-        "title_fee": 68.5,
-        "license_fee": 112.0,
-        "registration_fee": 8.0,
-        "amount_financed": 71756.05,
-        "apr": 0.05,
-        "term_months": 72,
-        "monthly_payment": 1155.63,
-        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
-      },
-      "missingDataNotes": [],
-      "availability_verify": "dealer_ok",
-      "is_stretch": true
-    },
-    {
-      "rank": 7,
-      "rank_reason": "two-tone; OTD pay $1187; 181 mi; 2,293 mi; STRETCH",
+      "rank": 10,
+      "rank_reason": "King Ranch; two-tone priority flag; OTD $1187/mo; 181 mi; 2,293 mi",
       "priorityFind": false,
       "year": 2026,
       "make": "Ford",
@@ -648,51 +1072,45 @@
       "listingUrls": {
         "dealer": "https://www.dealerrater.com/classifieds/2026-Ford-F_150-ad-1FTFW6L81TFA53708-38710/",
         "carscom": "https://www.cars.com/vehicledetail/fa629dc4-27ea-4cbb-a902-e181df8816e7/",
-        "autostoday": null
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L81TFA53708",
+        "cargurus": null
       },
       "links": {
         "dealer": "https://www.dealerrater.com/classifieds/2026-Ford-F_150-ad-1FTFW6L81TFA53708-38710/",
         "carscom": "https://www.cars.com/vehicledetail/fa629dc4-27ea-4cbb-a902-e181df8816e7/",
-        "autostoday": null
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L81TFA53708",
+        "cargurus": null
       },
       "dealer": {
         "name": "Community Honda",
         "address": "5700 East Freeway, Baytown, TX 77521",
         "phone": "832-572-5468"
       },
-      "dealer_name": "Community Honda Baytown",
+      "dealer_name": "Community Honda",
       "advertisedOptions": [
-        "FX4 Off-Road",
-        "EcoBoost 3.5",
-        "B&O Unleashed",
-        "Power-deployable boards",
         "4x4",
-        "Two-tone accent"
+        "Two-tone"
       ],
       "options_highlighted": [
-        "FX4 Off-Road",
-        "EcoBoost 3.5",
-        "B&O Unleashed",
-        "Power-deployable boards",
         "4x4",
-        "Two-tone accent"
+        "Two-tone"
       ],
-      "kbbFairPurchase": 64000,
-      "kbbTradeIn": 59000,
-      "book_purchase": 64000,
-      "book_wholesale_proxy": 59000,
+      "kbbFairPurchase": 68016,
+      "kbbTradeIn": 59854,
+      "book_purchase": 68016,
+      "book_wholesale_proxy": 59854,
       "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.038,
+      "ltv": 0.977,
       "dealPill": "Stretch",
-      "deal_score": 2.2255,
-      "id": "baytown-kr-53708",
+      "deal_score": 2.1644,
+      "id": "kr-a53708",
       "condition": "Good",
-      "stock_number": "TE018339A",
+      "stock_number": null,
       "drivetrain": "4x4",
       "cab": "SuperCrew",
       "bed": "5.5 ft",
-      "color": "Agate Black Metallic / Marsh Gray accent",
-      "notes": "Live on DealerRater from Community Honda Baytown ($66,435). Dealer site CF-blocked. Special paint lower accent two-tone noted. FX4. | STRETCH (price/miles/payment).",
+      "color": "black",
+      "notes": "DealerRater live from Community Honda; dealer site CF-blocked. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. Two-tone priority flag. ",
       "still_for_sale": true,
       "date_seen": "2026-10-01",
       "ttlr": {
@@ -710,14 +1128,703 @@
         "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
       },
       "missingDataNotes": [
-        "Dealer mycommunityhonda.com VDP 404/CF \u2014 confirm with Community Honda Baytown before trip"
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
       "availability_verify": "dealer_secondary",
+      "audit_result": "PASS",
       "is_stretch": true
     },
     {
-      "rank": 8,
-      "rank_reason": "CPO; OTD pay $1259; 171 mi; 3,970 mi; STRETCH",
+      "rank": 11,
+      "rank_reason": "King Ranch; OTD $822/mo; 213 mi; 33,690 mi",
+      "priorityFind": false,
+      "year": 2020,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 33690,
+      "price": 45958,
+      "asking_price": 45958,
+      "payment5_72": 822.38,
+      "payment5_72_price_only": 740.15,
+      "payment_includes_ttlr": true,
+      "distance_mi": 213,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTEW1E56LFA81652",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/5e345945-89ee-54fb-9497-658754061b05/ef5148c7-696c-4dd2-85cd-c4ce48bafd6d/GpOsMW4Ih-i55xpD-zooPur8bwI.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E56LFA81652",
+        "carscom": "https://www.cars.com/vehicledetail/2f2c27c2-0ada-43cc-9e4d-0fe19962890e/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E56LFA81652",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E56LFA81652",
+        "carscom": "https://www.cars.com/vehicledetail/2f2c27c2-0ada-43cc-9e4d-0fe19962890e/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E56LFA81652",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "TX Auto Group Houston",
+        "address": "Houston, TX 77057",
+        "phone": null
+      },
+      "dealer_name": "TX Auto Group Houston",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 38504,
+      "kbbTradeIn": 33883,
+      "book_purchase": 38504,
+      "book_wholesale_proxy": 33883,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.194,
+      "dealPill": "Stretch",
+      "deal_score": 2.0164,
+      "id": "kr-a81652",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "white",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 45958,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 4917.51,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 51064.01,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 822.38,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 12,
+      "rank_reason": "King Ranch; OTD $1091/mo; 201 mi; 25,170 mi",
+      "priorityFind": false,
+      "year": 2024,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 25170,
+      "price": 61019,
+      "asking_price": 61019,
+      "payment5_72": 1090.89,
+      "payment5_72_price_only": 982.71,
+      "payment_includes_ttlr": true,
+      "distance_mi": 201,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6L84RFA81365",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/5c7bf20c-bc5a-55c6-aeed-1a2894d36348/b91ba70e-9f97-4301-bfe1-a02bfc6cb5df/SFtzNMWOZIyOkFwQ6jZhk55X5tM.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L84RFA81365",
+        "carscom": "https://www.cars.com/vehicledetail/7271169f-3faf-476d-ac98-4cef4da462f2/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L84RFA81365",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L84RFA81365",
+        "carscom": "https://www.cars.com/vehicledetail/7271169f-3faf-476d-ac98-4cef4da462f2/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L84RFA81365",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Group 1 Chevrolet Spring",
+        "address": "Houston/Spring, TX 77090",
+        "phone": null
+      },
+      "dealer_name": "Group 1 Chevrolet Spring",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 56186,
+      "kbbTradeIn": 49443,
+      "book_purchase": 56186,
+      "book_wholesale_proxy": 49443,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.086,
+      "dealPill": "Stretch",
+      "deal_score": 2.1769,
+      "id": "kr-a81365",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "white",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 61019,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 6529.03,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 67736.53,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 1090.89,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 13,
+      "rank_reason": "King Ranch; OTD $1117/mo; 47 mi; 34,915 mi",
+      "priorityFind": false,
+      "year": 2025,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 34915,
+      "price": 62460,
+      "asking_price": 62460,
+      "payment5_72": 1116.58,
+      "payment5_72_price_only": 1005.91,
+      "payment_includes_ttlr": true,
+      "distance_mi": 47,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6LD5SFA30797",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/cdbb93ff-746e-5f8c-b0f0-94050be0134b/e9dfd3ac-0ca3-4457-8b6b-b16d229b384b/voEBxBCSDeO93Wah4HWsMs06gfY.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.mendozaford.com/all-inventory/index.htm",
+        "carscom": "https://www.cars.com/vehicledetail/61060bd1-a768-4853-bcec-96da57ffd30d/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD5SFA30797",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.mendozaford.com/all-inventory/index.htm",
+        "carscom": "https://www.cars.com/vehicledetail/61060bd1-a768-4853-bcec-96da57ffd30d/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD5SFA30797",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Mendoza Ford",
+        "address": "7951 Maurice Ave, Maurice, LA 70555",
+        "phone": "337-740-1000"
+      },
+      "dealer_name": "Mendoza Ford",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 60406,
+      "kbbTradeIn": 53157,
+      "book_purchase": 60406,
+      "book_wholesale_proxy": 53157,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.034,
+      "dealPill": "Stretch",
+      "deal_score": 2.1506,
+      "id": "kr-a30797",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "white",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 62460,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 6683.22,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 69331.72,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 1116.58,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 14,
+      "rank_reason": "King Ranch; OTD $1130/mo; 217 mi; 20,568 mi",
+      "priorityFind": false,
+      "year": 2025,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4 CPO",
+      "miles": 20568,
+      "price": 63216,
+      "asking_price": 63216,
+      "payment5_72": 1130.06,
+      "payment5_72_price_only": 1018.09,
+      "payment_includes_ttlr": true,
+      "distance_mi": 217,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6L83SFB42114",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/a8a8d4bf-cce8-5073-b3d5-001266b4c36b/abb87363-9c97-44bd-a807-9fe48885f5e0/wYlyLU8g6bvwoA8LBoyZFOQdwXc.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L83SFB42114",
+        "carscom": "https://www.cars.com/vehicledetail/e2f66b14-1313-4b93-98dc-96dcf2ba06f1/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L83SFB42114",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L83SFB42114",
+        "carscom": "https://www.cars.com/vehicledetail/e2f66b14-1313-4b93-98dc-96dcf2ba06f1/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L83SFB42114",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Joe Myers Ford",
+        "address": "Houston, TX 77040",
+        "phone": null
+      },
+      "dealer_name": "Joe Myers Ford",
+      "advertisedOptions": [
+        "4x4",
+        "CPO"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 61554,
+      "kbbTradeIn": 54167,
+      "book_purchase": 61554,
+      "book_wholesale_proxy": 54167,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.027,
+      "dealPill": "Stretch",
+      "deal_score": 2.1571,
+      "id": "kr-b42114",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "white",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 63216,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 6764.11,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 70168.61,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 1130.06,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 15,
+      "rank_reason": "King Ranch; OTD $1151/mo; 97 mi; 24,625 mi",
+      "priorityFind": false,
+      "year": 2025,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 24625,
+      "price": 64378,
+      "asking_price": 64378,
+      "payment5_72": 1150.78,
+      "payment5_72_price_only": 1036.8,
+      "payment_includes_ttlr": true,
+      "distance_mi": 97,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6LD2SFA92500",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/4497031f-652a-423f-b070-22562b4666c5/4ca84c30-eb1d-4816-9198-f8a0a2213315/EaiDoV-488w2uCbRYZeIqn8mKjU.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.geauxcdjr.com/inventory/",
+        "carscom": "https://www.cars.com/vehicledetail/7f4071d4-3cf3-48b8-9a35-d5a3352a944e/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD2SFA92500",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.geauxcdjr.com/inventory/",
+        "carscom": "https://www.cars.com/vehicledetail/7f4071d4-3cf3-48b8-9a35-d5a3352a944e/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD2SFA92500",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Geaux CDJR Denham Springs",
+        "address": "Denham Springs, LA 70726",
+        "phone": null
+      },
+      "dealer_name": "Geaux CDJR Denham Springs",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 61230,
+      "kbbTradeIn": 53882,
+      "book_purchase": 61230,
+      "book_wholesale_proxy": 53882,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.051,
+      "dealPill": "Stretch",
+      "deal_score": 2.2018,
+      "id": "kr-a92500",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "brown",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 64378,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 6888.45,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 71454.95,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 1150.78,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 16,
+      "rank_reason": "King Ranch; OTD $1156/mo; 191 mi; 23,607 mi",
+      "priorityFind": false,
+      "year": 2025,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 23607,
+      "price": 64650,
+      "asking_price": 64650,
+      "payment5_72": 1155.63,
+      "payment5_72_price_only": 1041.18,
+      "payment_includes_ttlr": true,
+      "distance_mi": 191,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6LD7SFA57161",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/68c2ba79-384c-55a5-a826-757b61b5bc93/d0a57c79-6f89-4caa-abd8-d54c51c3a673/f8OwDFoec5Blx9IyBoGPjkFInDc.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.randallreedsplanetford.com/vehicle/1FTFW6LD7SFA57161/Used--2025--Ford--F--150--Truck_Hybrid----Humble--TX/",
+        "carscom": "https://www.cars.com/vehicledetail/3f8d35a6-0286-4be6-b1c9-e0d9cd4f1b91/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD7SFA57161",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.randallreedsplanetford.com/vehicle/1FTFW6LD7SFA57161/Used--2025--Ford--F--150--Truck_Hybrid----Humble--TX/",
+        "carscom": "https://www.cars.com/vehicledetail/3f8d35a6-0286-4be6-b1c9-e0d9cd4f1b91/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD7SFA57161",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Randall Reed's Planet Ford",
+        "address": "19000 Eastex Frwy, Humble, TX 77338",
+        "phone": "281-319-9600"
+      },
+      "dealer_name": "Randall Reed's Planet Ford",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 61311,
+      "kbbTradeIn": 53953,
+      "book_purchase": 61311,
+      "book_wholesale_proxy": 53953,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.054,
+      "dealPill": "Stretch",
+      "deal_score": 2.2096,
+      "id": "kr-a57161",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "black",
+      "notes": "Dealer VDP live with VIN+price; sold-text was inventory boilerplate only (FALSE POSITIVE overridden). Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 64650,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 6917.55,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 71756.05,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 1155.63,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [],
+      "availability_verify": "dealer_ok",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 17,
+      "rank_reason": "King Ranch; OTD $1214/mo; 223 mi; 15,878 mi",
+      "priorityFind": false,
+      "year": 2025,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 15878,
+      "price": 67920,
+      "asking_price": 67920,
+      "payment5_72": 1213.92,
+      "payment5_72_price_only": 1093.85,
+      "payment_includes_ttlr": true,
+      "distance_mi": 223,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6LD4SFB59386",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/60aae495-15c4-56be-b980-6e8d70f29b02/e29f70eb-c16a-4f2e-bd41-b8113da86678/f6bNfL1woz9EZ74-qfkVET0k1NA.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFB59386",
+        "carscom": "https://www.cars.com/vehicledetail/e8f6a0fc-cc7f-4f29-99f4-ea33f6437c0b/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFB59386",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFB59386",
+        "carscom": "https://www.cars.com/vehicledetail/e8f6a0fc-cc7f-4f29-99f4-ea33f6437c0b/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFB59386",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Astro Ford",
+        "address": "D'Iberville, MS 39540",
+        "phone": null
+      },
+      "dealer_name": "Astro Ford",
+      "advertisedOptions": [
+        "4x4",
+        "CPO"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 61929,
+      "kbbTradeIn": 54497,
+      "book_purchase": 61929,
+      "book_wholesale_proxy": 54497,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.097,
+      "dealPill": "Stretch",
+      "deal_score": 2.3109,
+      "id": "kr-b59386",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "See listing",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 67920,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 7267.44,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 75375.94,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 1213.92,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 18,
+      "rank_reason": "King Ranch; OTD $1215/mo; 245 mi; 13,047 mi",
+      "priorityFind": false,
+      "year": 2025,
+      "make": "Ford",
+      "model": "F-150",
+      "trim": "King Ranch SuperCrew 4x4",
+      "miles": 13047,
+      "price": 67995,
+      "asking_price": 67995,
+      "payment5_72": 1215.26,
+      "payment5_72_price_only": 1095.05,
+      "payment_includes_ttlr": true,
+      "distance_mi": 245,
+      "twoTone": false,
+      "two_tone": false,
+      "hasRamBox": false,
+      "rambox": false,
+      "vin": "1FTFW6L82SFB56277",
+      "photos": [
+        "https://platform.cstatic-images.com/in/v2/61da04d6-ec77-52c3-85e0-bf513a8a35b3/a211c7b9-3075-4c10-89f9-d0eed872eab7/pXGMiUguXXCZuKIhR8YpvhUjPeU.jpg"
+      ],
+      "listingUrls": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L82SFB56277",
+        "carscom": "https://www.cars.com/vehicledetail/980488fe-2338-4dca-9fe1-69a8ffaf35b0/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L82SFB56277",
+        "cargurus": null
+      },
+      "links": {
+        "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L82SFB56277",
+        "carscom": "https://www.cars.com/vehicledetail/980488fe-2338-4dca-9fe1-69a8ffaf35b0/",
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L82SFB56277",
+        "cargurus": null
+      },
+      "dealer": {
+        "name": "Peters Chevrolet",
+        "address": "Longview, TX 75605",
+        "phone": null
+      },
+      "dealer_name": "Peters Chevrolet",
+      "advertisedOptions": [
+        "4x4"
+      ],
+      "options_highlighted": [
+        "4x4"
+      ],
+      "kbbFairPurchase": 62156,
+      "kbbTradeIn": 54697,
+      "book_purchase": 62156,
+      "book_wholesale_proxy": 54697,
+      "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
+      "ltv": 1.094,
+      "dealPill": "Stretch",
+      "deal_score": 2.3093,
+      "id": "kr-b56277",
+      "condition": "Good",
+      "stock_number": null,
+      "drivetrain": "4x4",
+      "cab": "SuperCrew",
+      "bed": "5.5 ft",
+      "color": "blue",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
+      "still_for_sale": true,
+      "date_seen": "2026-10-01",
+      "ttlr": {
+        "asking_price": 67995,
+        "sales_tax_rate": 0.107,
+        "sales_tax_rate_pct": "10.70%",
+        "sales_tax_amount": 7275.47,
+        "title_fee": 68.5,
+        "license_fee": 112.0,
+        "registration_fee": 8.0,
+        "amount_financed": 75458.96,
+        "apr": 0.05,
+        "term_months": 72,
+        "monthly_payment": 1215.26,
+        "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
+      },
+      "missingDataNotes": [
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
+      ],
+      "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
+      "is_stretch": true
+    },
+    {
+      "rank": 19,
+      "rank_reason": "King Ranch; OTD $1259/mo; 171 mi; 3,970 mi",
       "priorityFind": false,
       "year": 2026,
       "make": "Ford",
@@ -741,47 +1848,44 @@
       "listingUrls": {
         "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272",
         "carscom": "https://www.cars.com/vehicledetail/7daaa5b9-4ebd-46af-8eca-16cbfe1d45dc/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272"
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272",
+        "cargurus": null
       },
       "links": {
         "dealer": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272",
         "carscom": "https://www.cars.com/vehicledetail/7daaa5b9-4ebd-46af-8eca-16cbfe1d45dc/",
-        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272"
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272",
+        "cargurus": null
       },
       "dealer": {
-        "name": "Marketplace Chevrolet Buick",
+        "name": "Marketplace Chevrolet",
         "address": "Stonewall, LA 71078",
         "phone": null
       },
       "dealer_name": "Marketplace Chevrolet",
       "advertisedOptions": [
-        "CPO",
         "4x4",
-        "King Ranch",
-        "SuperCrew"
+        "CPO"
       ],
       "options_highlighted": [
-        "CPO",
-        "4x4",
-        "King Ranch",
-        "SuperCrew"
+        "4x4"
       ],
-      "kbbFairPurchase": 66000,
-      "kbbTradeIn": 61000,
-      "book_purchase": 66000,
-      "book_wholesale_proxy": 61000,
+      "kbbFairPurchase": 67882,
+      "kbbTradeIn": 59736,
+      "book_purchase": 67882,
+      "book_wholesale_proxy": 59736,
       "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.068,
+      "ltv": 1.038,
       "dealPill": "Stretch",
-      "deal_score": 2.3274,
-      "id": "stonewall-kr-43272",
+      "deal_score": 2.2974,
+      "id": "kr-a43272",
       "condition": "Good",
       "stock_number": null,
       "drivetrain": "4x4",
       "cab": "SuperCrew",
       "bed": "5.5 ft",
-      "color": "Red",
-      "notes": "AT InStock CPO @ Marketplace Chevrolet Stonewall. Dealer site blocked. | STRETCH (price/miles/payment).",
+      "color": "red",
+      "notes": "Live AutosToday InStock; Cars.com often 403 from box. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
       "still_for_sale": true,
       "date_seen": "2026-10-01",
       "ttlr": {
@@ -799,14 +1903,15 @@
         "jurisdiction": "Eunice city limits inside Acadia Parish, LA (ZIP 70535)"
       },
       "missingDataNotes": [
-        "Dealer site blocked \u2014 call Marketplace Chevrolet Stonewall to confirm"
+        "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
       "availability_verify": "aggregator_instock",
+      "audit_result": "PASS",
       "is_stretch": true
     },
     {
-      "rank": 9,
-      "rank_reason": "OTD pay $1286; 22 mi; 2,248 mi; STRETCH",
+      "rank": 20,
+      "rank_reason": "King Ranch; OTD $1286/mo; 22 mi; 2,248 mi",
       "priorityFind": false,
       "year": 2026,
       "make": "Ford",
@@ -830,12 +1935,14 @@
       "listingUrls": {
         "dealer": "https://www.sterlingfordopelousas.com/used-Opelousas-2026-Ford-F+150-King+Ranch-1FTFW6LD9TFB07494",
         "carscom": "https://www.cars.com/vehicledetail/ee3d12c2-9a7d-4535-8cd3-733a26c21d84/",
-        "autostoday": null
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD9TFB07494",
+        "cargurus": null
       },
       "links": {
         "dealer": "https://www.sterlingfordopelousas.com/used-Opelousas-2026-Ford-F+150-King+Ranch-1FTFW6LD9TFB07494",
         "carscom": "https://www.cars.com/vehicledetail/ee3d12c2-9a7d-4535-8cd3-733a26c21d84/",
-        "autostoday": null
+        "autostoday": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD9TFB07494",
+        "cargurus": null
       },
       "dealer": {
         "name": "Sterling Ford",
@@ -844,35 +1951,27 @@
       },
       "dealer_name": "Sterling Ford",
       "advertisedOptions": [
-        "PowerBoost Hybrid",
-        "601A High",
-        "B&O Unleashed",
-        "Power-deployable boards",
         "4x4"
       ],
       "options_highlighted": [
-        "PowerBoost Hybrid",
-        "601A High",
-        "B&O Unleashed",
-        "Power-deployable boards",
         "4x4"
       ],
-      "kbbFairPurchase": 68000,
-      "kbbTradeIn": 63000,
-      "book_purchase": 68000,
-      "book_wholesale_proxy": 63000,
+      "kbbFairPurchase": 68020,
+      "kbbTradeIn": 59857,
+      "book_purchase": 68020,
+      "book_wholesale_proxy": 59857,
       "book_source": "Estimated from market comps + KBB method (live KBB blocked 2026-10-01; re-verify on kbb.com)",
-      "ltv": 1.059,
+      "ltv": 1.058,
       "dealPill": "Stretch",
-      "deal_score": 2.3453,
-      "id": "opelousas-kr-07494",
+      "deal_score": 2.3443,
+      "id": "kr-b07494",
       "condition": "Good",
-      "stock_number": "26T1033A",
+      "stock_number": null,
       "drivetrain": "4x4",
       "cab": "SuperCrew",
       "bed": "5.5 ft",
-      "color": "Star White Metallic Tri-Coat",
-      "notes": "DEALER VERIFIED available. Low miles stretch on price/payment. PowerBoost hybrid 601A. | STRETCH (price/miles/payment).",
+      "color": "white",
+      "notes": "Sterling Ford dealer VDP verified. Audit PASS. Bound \u2264250 mi (prefer \u2264200). STRETCH. ",
       "still_for_sale": true,
       "date_seen": "2026-10-01",
       "ttlr": {
@@ -891,123 +1990,54 @@
       },
       "missingDataNotes": [],
       "availability_verify": "dealer_ok",
+      "audit_result": "PASS",
       "is_stretch": true
     }
   ],
   "drops": [
     {
-      "prior_rank": 6,
       "vin": "1FTEW1E43LFA06575",
-      "year": 2020,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4",
-      "miles": 59386,
-      "price": 41997,
-      "reason": "Caller confirmed Terrebonne Ford / dealer page no longer available \u2014 DROP"
+      "reason": "AutosToday/Terrebonne Houma KR \u2014 caller confirmed sold/unavailable \u2014 BANNED"
     },
     {
-      "prior_rank": 1,
-      "vin": "1FTEW1E42LFA68436",
-      "year": 2020,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "Lariat SuperCrew 4x4",
-      "miles": 9717,
-      "price": 42121,
-      "reason": "Hard distance >200 mi from 70535 (OSRM ~355) \u2014 moved to watch_outside_radius"
-    },
-    {
-      "prior_rank": 2,
-      "vin": "1C6SRFKM1PN505812",
-      "year": 2023,
-      "make": "Ram",
-      "model": "1500",
-      "trim": "Longhorn Crew 4x4",
-      "miles": 42198,
-      "price": 41990,
-      "reason": "Hard distance >200 (Austin ~340 mi)"
-    },
-    {
-      "prior_rank": 3,
-      "vin": "1C6SRFKT8PN656931",
-      "year": 2023,
-      "make": "Ram",
-      "model": "1500",
-      "trim": "Longhorn Crew 4x4 RamBox",
-      "miles": 33772,
-      "price": 48237,
-      "reason": "Hard distance >200 (New Braunfels ~377 mi) \u2014 was sole RamBox"
-    },
-    {
-      "prior_rank": 4,
-      "vin": "1C6SRFKT2PN602766",
-      "year": 2023,
-      "make": "Ram",
-      "model": "1500",
-      "trim": "Longhorn Crew 4x4 CPO",
-      "miles": 26309,
-      "price": 50717,
-      "reason": "Hard distance >200 (Corpus Christi ~320 mi)"
-    },
-    {
-      "prior_rank": 5,
-      "vin": "1FTEW1E46LFC77419",
-      "year": 2020,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4 CPO",
-      "miles": 57201,
-      "price": 43124,
-      "reason": "Hard distance >200 (Jacksonville AR ~360 mi)"
-    },
-    {
-      "prior_rank": null,
       "vin": "1FTFW1E59PFB18543",
-      "year": 2023,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4",
-      "miles": 45027,
-      "price": 52434,
-      "reason": "Link check FAIL: VIN not on Ford of Harvey used inventory \u2014 treat as sold/removed"
+      "reason": "Ford of Harvey \u2014 VIN absent from dealer inventory"
     },
     {
-      "prior_rank": null,
       "vin": "1FTFW1E82PFA54257",
-      "year": 2023,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4",
-      "miles": 11330,
-      "price": 58434,
-      "reason": "Link check FAIL: VIN not on Ford of Harvey used inventory \u2014 treat as sold/removed"
+      "reason": "Ford of Harvey \u2014 VIN absent from dealer inventory"
     },
     {
-      "prior_rank": null,
       "vin": "1FTFW6LD2SFB11515",
-      "year": 2025,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4",
-      "miles": 7920,
-      "price": 64813,
-      "reason": "Link check FAIL: Greg LeBlanc Toyota dealer VDP returns 404 Page Not Found"
+      "reason": "Greg LeBlanc Toyota dealer VDP 404"
     },
     {
-      "prior_rank": null,
+      "vin": "1C6SRFKT9PN551749",
+      "reason": "AutosToday 404 during refill"
+    },
+    {
       "vin": "1FTFW6L89TFA80770",
-      "year": 2026,
-      "make": "Ford",
-      "model": "F-150",
-      "trim": "King Ranch SuperCrew 4x4",
-      "miles": 6058,
-      "price": null,
-      "reason": "AutosToday Price N/A + notfound.jpg; Classic Chevy Beaumont dealer AccessDenied \u2014 DROP missing price"
+      "reason": "AutosToday Price N/A + notfound.jpg"
+    },
+    {
+      "vin": "1FTEW1E42LFA68436",
+      "reason": "Distance 355 > 250 stretch \u2014 watch_outside_radius"
+    },
+    {
+      "vin": "1C6SRFKM1PN505812",
+      "reason": "Austin ~340 mi > 250"
+    },
+    {
+      "vin": "1C6SRFKT8PN656931",
+      "reason": "New Braunfels ~377 mi > 250 (RamBox watch)"
+    },
+    {
+      "vin": "1C6SRFKT2PN602766",
+      "reason": "Corpus ~320 mi > 250"
+    },
+    {
+      "vin": "1FTEW1E46LFC77419",
+      "reason": "Jacksonville AR ~360 mi > 250"
     }
-  ],
-  "rank_changes_vs_prior": [
-    "Prior Top 6 all removed from cards: 5 by hard 200 mi distance, 1 (Houma KR) by availability fail.",
-    "Refilled with in-radius Longhorn/KR from Cars.com + dealer verification pass."
   ]
 }
