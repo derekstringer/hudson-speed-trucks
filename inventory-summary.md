@@ -1,34 +1,50 @@
 # Hudson Speed Trucks — Inventory Summary
 
-**Generated:** 2026-10-01 10:45 CT  
+**Generated:** 2026-10-01 13:02 CT  
 **ZIP:** 70535 (Eunice, LA) · Prefer ≤200 mi / allow ≤250 mi · Miles ≤60k  
-**Board:** 20 trucks (audit: 20 PASS / 0 FAIL)  
-**Payments:** OTD + Acadia TTL&R @ 5%/72  
+**Board:** 2 trucks (payment hard-cap ≤ $755/mo OTD @ 5%/72) · audit: 2 PASS / 0 FAIL  
+**Payments:** OTD + Acadia TTL&R @ 5%/72 · **HARD CAP ≤ $755** (prefer ≤$700–$723; fewer than 20 OK)  
 
 ## Audit gate (mandatory before shareable)
 - All listing links reachable (dealer and/or aggregator).
 - All vehicles still available (no sold/delisted signal on dealer/AT).
 - Banned: Houma Autos Today KR `1FTEW1E43LFA06575` (confirmed sold) — excluded.
 - Other permanent bans: Harvey `1FTFW1E59PFB18543`, `1FTFW1E82PFA54257`; Greg LeBlanc `1FTFW6LD2SFB11515`; CarMax LH `1C6SRFKT9PN551749`; Beaumont `1FTFW6L89TFA80770`.
+- **Payment hard-cap:** dropped 18 trucks with OTD pay > $755/mo (not padded back to 20).
 
-## Top board (LH → two-tone KR → other KR)
-1. 2022 Ram 1500 Longhorn Crew 4x4 — $38,970 · 53,495 mi · 214 mi · Helfman CDJR · pay $697.8 OTD
-2. 2022 Ram 1500 Longhorn Crew 4x4 — $41,225 · 35,455 mi · 215 mi · Group 1 Toyota Southwest Houston · pay $738.0 OTD
-3. 2021 Ram 1500 Longhorn Crew 4x4 CPO — $42,222 · 57,753 mi · 61 mi · Hixson Ford of Alexandria · pay $755.78 OTD
-4. 2021 Ram 1500 Longhorn Crew 4x4 — $43,998 · 34,976 mi · 229 mi · CarMax Houston Katy Freeway · pay $787.44 OTD
-5. 2024 Ram 1500 Longhorn Crew 4x4 — $51,420 · 12,360 mi · 228 mi · Toyota of Katy · pay $919.76 OTD
-6. 2026 Ram 1500 Limited Longhorn Crew 4x4 — $56,895 · 21,956 mi · 70 mi · Autoplex Sulphur · pay $1017.37 OTD
-7. 2024 Ford F-150 King Ranch SuperCrew 4x4 — $55,297 · 34,364 mi · 201 mi · EchoPark Automotive Houston [two-tone] · pay $988.88 OTD
-8. 2025 Ford F-150 King Ranch SuperCrew 4x4 — $61,910 · 5,681 mi · 201 mi · Mercedes-Benz of Houston North [two-tone] · pay $1106.78 OTD
-9. 2025 Ford F-150 King Ranch SuperCrew 4x4 — $64,895 · 9,487 mi · 22 mi · Sterling Ford [two-tone] · pay $1159.99 OTD
-10. 2026 Ford F-150 King Ranch SuperCrew 4x4 — $66,435 · 2,293 mi · 181 mi · Community Honda [two-tone] · pay $1187.45 OTD
-11. 2020 Ford F-150 King Ranch SuperCrew 4x4 — $45,958 · 33,690 mi · 213 mi · TX Auto Group Houston · pay $822.38 OTD
-12. 2024 Ford F-150 King Ranch SuperCrew 4x4 — $61,019 · 25,170 mi · 201 mi · Group 1 Chevrolet Spring · pay $1090.89 OTD
-13. 2025 Ford F-150 King Ranch SuperCrew 4x4 — $62,460 · 34,915 mi · 47 mi · Mendoza Ford · pay $1116.58 OTD
-14. 2025 Ford F-150 King Ranch SuperCrew 4x4 CPO — $63,216 · 20,568 mi · 217 mi · Joe Myers Ford · pay $1130.06 OTD
-15. 2025 Ford F-150 King Ranch SuperCrew 4x4 — $64,378 · 24,625 mi · 97 mi · Geaux CDJR Denham Springs · pay $1150.78 OTD
-16. 2025 Ford F-150 King Ranch SuperCrew 4x4 — $64,650 · 23,607 mi · 191 mi · Randall Reed's Planet Ford · pay $1155.63 OTD
-17. 2025 Ford F-150 King Ranch SuperCrew 4x4 — $67,920 · 15,878 mi · 223 mi · Astro Ford · pay $1213.92 OTD
-18. 2025 Ford F-150 King Ranch SuperCrew 4x4 — $67,995 · 13,047 mi · 245 mi · Peters Chevrolet · pay $1215.26 OTD
-19. 2026 Ford F-150 King Ranch SuperCrew 4x4 CPO — $70,469 · 3,970 mi · 171 mi · Marketplace Chevrolet · pay $1259.37 OTD
-20. 2026 Ford F-150 King Ranch SuperCrew 4x4 — $71,979 · 2,248 mi · 22 mi · Sterling Ford · pay $1286.29 OTD
+## Top board (payment-capped survivors)
+1. 2022 Ram 1500 Longhorn Crew 4x4 — $38,970 · 53,495 mi · 214 mi · Helfman CDJR [AutoCheck accident+multi-owner] · pay $697.8 OTD · LTV 0.952 (Good)
+2. 2022 Ram 1500 Longhorn Crew 4x4 — $41,225 · 35,455 mi · 215 mi · Group 1 Toyota Southwest Houston · pay $738.0 OTD · LTV 0.973 (Good)
+
+## Over-budget drops (OTD pay > $755)
+- 2021 Ram Longhorn Crew 4x4 CPO · $42,222 · pay $755.78 · Hixson Ford of Alexandria · VIN `1C6SRFKT6MN666448`
+- 2021 Ram Longhorn Crew 4x4 · $43,998 · pay $787.44 · CarMax Houston Katy Freeway · VIN `1C6SRFKT5MN547001`
+- 2024 Ram Longhorn Crew 4x4 · $51,420 · pay $919.76 · Toyota of Katy · VIN `1C6SRFKT3RN172233`
+- 2026 Ram Limited Longhorn Crew 4x4 · $56,895 · pay $1017.37 · Autoplex Sulphur · VIN `1C6SRFHP3TN183380`
+- 2024 Ford King Ranch SuperCrew 4x4 · $55,297 · pay $988.88 · EchoPark Automotive Houston · VIN `1FTFW6LD0RFA98354`
+- 2025 Ford King Ranch SuperCrew 4x4 · $61,910 · pay $1106.78 · Mercedes-Benz of Houston North · VIN `1FTFW6LD0SFB84981`
+- 2025 Ford King Ranch SuperCrew 4x4 · $64,895 · pay $1159.99 · Sterling Ford · VIN `1FTFW6LD4SFA33089`
+- 2026 Ford King Ranch SuperCrew 4x4 · $66,435 · pay $1187.45 · Community Honda · VIN `1FTFW6L81TFA53708`
+- 2020 Ford King Ranch SuperCrew 4x4 · $45,958 · pay $822.38 · TX Auto Group Houston · VIN `1FTEW1E56LFA81652`
+- 2024 Ford King Ranch SuperCrew 4x4 · $61,019 · pay $1090.89 · Group 1 Chevrolet Spring · VIN `1FTFW6L84RFA81365`
+- 2025 Ford King Ranch SuperCrew 4x4 · $62,460 · pay $1116.58 · Mendoza Ford · VIN `1FTFW6LD5SFA30797`
+- 2025 Ford King Ranch SuperCrew 4x4 CPO · $63,216 · pay $1130.06 · Joe Myers Ford · VIN `1FTFW6L83SFB42114`
+- 2025 Ford King Ranch SuperCrew 4x4 · $64,378 · pay $1150.78 · Geaux CDJR Denham Springs · VIN `1FTFW6LD2SFA92500`
+- 2025 Ford King Ranch SuperCrew 4x4 · $64,650 · pay $1155.63 · Randall Reed's Planet Ford · VIN `1FTFW6LD7SFA57161`
+- 2025 Ford King Ranch SuperCrew 4x4 · $67,920 · pay $1213.92 · Astro Ford · VIN `1FTFW6LD4SFB59386`
+- 2025 Ford King Ranch SuperCrew 4x4 · $67,995 · pay $1215.26 · Peters Chevrolet · VIN `1FTFW6L82SFB56277`
+- 2026 Ford King Ranch SuperCrew 4x4 CPO · $70,469 · pay $1259.37 · Marketplace Chevrolet · VIN `1FTFW6LDXTFA43272`
+- 2026 Ford King Ranch SuperCrew 4x4 · $71,979 · pay $1286.29 · Sterling Ford · VIN `1FTFW6LD9TFB07494`
+
+## Permanent / prior drops
+- `1FTEW1E43LFA06575` — AutosToday/Terrebonne Houma KR — caller confirmed sold/unavailable — BANNED
+- `1FTFW1E59PFB18543` — Ford of Harvey — VIN absent from dealer inventory
+- `1FTFW1E82PFA54257` — Ford of Harvey — VIN absent from dealer inventory
+- `1FTFW6LD2SFB11515` — Greg LeBlanc Toyota dealer VDP 404
+- `1C6SRFKT9PN551749` — AutosToday 404 during refill
+- `1FTFW6L89TFA80770` — AutosToday Price N/A + notfound.jpg
+- `1FTEW1E42LFA68436` — Distance 355 > 250 stretch — watch_outside_radius
+- `1C6SRFKM1PN505812` — Austin ~340 mi > 250
+- `1C6SRFKT8PN656931` — New Braunfels ~377 mi > 250 (RamBox watch)
+- `1C6SRFKT2PN602766` — Corpus ~320 mi > 250
+- `1FTEW1E46LFC77419` — Jacksonville AR ~360 mi > 250

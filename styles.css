@@ -187,6 +187,26 @@ body {
   background: var(--priority-bg); color: var(--priority);
   border: 1px solid rgba(245, 185, 66, 0.45);
 }
+.badge.history-accident {
+  background: rgba(239, 68, 68, 0.14); color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+.badge.history-owners {
+  background: rgba(251, 146, 60, 0.14); color: #fdba74;
+  border-color: rgba(251, 146, 60, 0.4);
+}
+.history-banner {
+  margin: 0.75rem 1rem 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fecaca;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.history-banner strong { color: #fee2e2; }
+.history-banner em { color: #fff; font-style: normal; font-weight: 600; }
 
 /* Truck card */
 .truck-card {

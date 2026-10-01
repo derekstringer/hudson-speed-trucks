@@ -17,7 +17,7 @@
         <span class="brand-mark" aria-hidden="true"></span>
         <div>
           <h1>Hudson Speed</h1>
-          <p class="tagline">Top 20 truck deals · target ~$700/mo @ 5%/72</p>
+          <p class="tagline">Payment-capped deals · hard cap ≤$755/mo OTD @ 5%/72 · prefer ~$700–$723</p>
         </div>
       </div>
       <div class="header-meta">
@@ -39,7 +39,7 @@
       </div>
 
       <label class="field">
-        <span>Sort within Top 20</span>
+        <span>Sort within board</span>
         <select id="sortBy">
           <option value="rank">Deal rank (default)</option>
           <option value="payment">Payment (low → high)</option>
@@ -64,26 +64,27 @@
       </fieldset>
 
       <div class="filter-note">
-        <p>Showing <strong>Top 20 deals only</strong>. Filters reorder / narrow within those 20.</p>
+        <p>Board is <strong>hard-capped at OTD ≤ $755/mo</strong> (Acadia TTL&amp;R @ 5%/72). Fewer than 20 is OK — never padded with over-budget trucks. Filters reorder / narrow within the capped board.</p>
         <p>Sacrifice rank: scarce <strong>two-tone</strong> first, then rare <strong>RamBox</strong> (priority find — not required).</p>
         <p class="priority-hint"><span class="priority-badge mini">PRIORITY FIND</span> = RamBox (rare — not required)</p>
         <p>Two-tone is scarce on both Ram and Ford — flag when present.</p>
+        <p><span class="badge history-accident">AutoCheck accident</span> / <span class="badge history-owners">Multi-owner</span> = history caution (kept only if payment ≤ $755).</p>
       </div>
     </aside>
 
     <section class="results" aria-live="polite">
       <div class="results-bar">
-        <h2 id="resultsCount">Top 20 deals</h2>
-        <p class="results-sub">Expand a card for VIN, dealer, book breakdown &amp; links. Live Top 20 inventory.</p>
+        <h2 id="resultsCount">Payment-capped deals</h2>
+        <p class="results-sub">Expand a card for VIN, dealer, book breakdown &amp; links. Live board · OTD ≤ $755/mo.</p>
       </div>
       <div id="truckList" class="truck-list"></div>
-      <p id="emptyState" class="empty-state hidden">No trucks in the Top 20 match these filters.</p>
+      <p id="emptyState" class="empty-state hidden">No trucks on the payment-capped board match these filters.</p>
       <p id="noRamboxNote" class="empty-state rambox-hunt hidden">No RamBox in this cut — still hunting.</p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Listing prices change — call the dealer before travel. KBB Fair Purchase / Trade-In are <strong>estimates</strong> — re-verify on kbb.com. <strong>Payment = OTD financed @ 5% APR / 72 mo</strong>: asking + LA combined sales tax <strong>10.70%</strong> (Eunice city limits inside Acadia Parish / ZIP 70535; LATA Col M) + title <strong>$68.50</strong> + truck license plate <strong>$112</strong> (6,001–10,000 GVW / 4 yr) + OMV handling <strong>$8</strong>. No trade-in. LTV pills still use asking vs KBB (not OTD). Eunice St. Landry side is 11.00% if your address is that parish. Expand any card for the full payment math. Cap Top 20 after ≤60k filter (pool may be smaller) · Hudson Speed.</p>
+    <p>Listing prices change — call the dealer before travel. KBB Fair Purchase / Trade-In are <strong>estimates</strong> — re-verify on kbb.com. <strong>Payment = OTD financed @ 5% APR / 72 mo</strong>: asking + LA combined sales tax <strong>10.70%</strong> (Eunice city limits inside Acadia Parish / ZIP 70535; LATA Col M) + title <strong>$68.50</strong> + truck license plate <strong>$112</strong> (6,001–10,000 GVW / 4 yr) + OMV handling <strong>$8</strong>. No trade-in. LTV pills still use asking vs KBB (not OTD). Eunice St. Landry side is 11.00% if your address is that parish. Expand any card for the full payment math. Hard-capped at OTD ≤ $755/mo after ≤60k / ≤250 mi filters (board may be smaller than 20 — that is correct) · Hudson Speed.</p>
   </footer>
 
   <script src="app.js"></script>
