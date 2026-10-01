@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Hudson Speed Top 20 truck deals — Ram & Ford ranked by LTV, payment, miles." />
+  <title>Hudson Speed — Top 20 Truck Deals</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <h1>Hudson Speed</h1>
+          <p class="tagline">Top 20 truck deals · target ~$700/mo @ 5%/72</p>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="pill-legend" aria-label="Deal pill legend">
+          <span class="deal-pill great">Great</span>
+          <span class="deal-pill good">Good</span>
+          <span class="deal-pill fair">Fair</span>
+          <span class="deal-pill stretch">Stretch</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="filters" aria-label="Filters and sort">
+      <div class="filters-head">
+        <h2>Filters</h2>
+        <button type="button" class="btn-ghost" id="resetFilters">Reset</button>
+      </div>
+
+      <label class="field">
+        <span>Sort within Top 20</span>
+        <select id="sortBy">
+          <option value="rank">Deal rank (default)</option>
+          <option value="payment">Payment (low → high)</option>
+          <option value="ltv">LTV (best → worst)</option>
+          <option value="miles">Miles (low → high)</option>
+          <option value="year">Year (new → old)</option>
+          <option value="price">Price (low → high)</option>
+          <option value="distance">Distance (near → far)</option>
+        </select>
+      </label>
+
+      <fieldset class="field">
+        <legend>Make</legend>
+        <label class="check"><input type="checkbox" name="make" value="Ram" checked /> Ram</label>
+        <label class="check"><input type="checkbox" name="make" value="Ford" checked /> Ford</label>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Must have</legend>
+        <label class="check"><input type="checkbox" id="requireTwoTone" /> Two-tone <span style="color:var(--text-muted);font-size:0.78rem">(scarce)</span></label>
+        <label class="check"><input type="checkbox" id="requireRamBox" /> RamBox <span style="color:var(--text-muted);font-size:0.78rem">(rare · not required)</span></label>
+      </fieldset>
+
+      <div class="filter-note">
+        <p>Showing <strong>Top 20 deals only</strong>. Filters reorder / narrow within those 20.</p>
+        <p>Sacrifice rank: scarce <strong>two-tone</strong> first, then rare <strong>RamBox</strong> (priority find — not required).</p>
+        <p class="priority-hint"><span class="priority-badge mini">PRIORITY FIND</span> = RamBox (rare — not required)</p>
+        <p>Two-tone is scarce on both Ram and Ford — flag when present.</p>
+      </div>
+    </aside>
+
+    <section class="results" aria-live="polite">
+      <div class="results-bar">
+        <h2 id="resultsCount">Top 20 deals</h2>
+        <p class="results-sub">Expand a card for VIN, dealer, book breakdown &amp; links. Live Top 20 inventory.</p>
+      </div>
+      <div id="truckList" class="truck-list"></div>
+      <p id="emptyState" class="empty-state hidden">No trucks in the Top 20 match these filters.</p>
+      <p id="noRamboxNote" class="empty-state rambox-hunt hidden">No RamBox in this cut — still hunting.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Listing prices change — call the dealer before travel. KBB Fair Purchase / Trade-In values are <strong>estimates</strong> unless live-verified on kbb.com. Payment assumes asking price financed @ 5% APR / 72 months (no tax, fees, or down payment). Top 20 only · Hudson Speed.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
