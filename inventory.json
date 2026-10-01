@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-01T10:40:00-05:00",
+  "generated": "2026-10-01T10:45:00-05:00",
   "zip": "70535",
   "radius_prefer_mi": 200,
   "radius_stretch_mi": 250,
@@ -79,150 +79,235 @@
     ]
   },
   "audit": {
-    "ran_at": "2026-10-01T10:40:00-05:00",
-    "method": "HTTP check of dealer + Cars.com + AutosToday URLs; sold/unavailable regex; VIN/price presence on dealer pages when reachable",
+    "ran_at": "2026-10-01T10:45:00-05:00",
+    "method": "Fresh HTTP check of dealer + Cars.com + AutosToday URLs; sold/unavailable regex; VIN presence; Planet Ford boilerplate override when VIN present",
     "board_results": [
       {
         "vin": "1C6SRFKT0NN360525",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT0NN360525"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT0NN360525",
+        "action": "KEEP",
+        "dealer": "Helfman CDJR",
+        "price": 38970,
+        "distance_mi": 214
       },
       {
         "vin": "1C6SRFKT2NN332032",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT2NN332032"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT2NN332032",
+        "action": "KEEP",
+        "dealer": "Group 1 Toyota Southwest Houston",
+        "price": 41225,
+        "distance_mi": 215
       },
       {
         "vin": "1C6SRFKT6MN666448",
         "result": "PASS",
         "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.hixsonfordalex.com/used-inventory/index.htm"
+        "note": "links.dealer HTTP 403 (treated reachable); links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT6MN666448",
+        "action": "KEEP",
+        "dealer": "Hixson Ford of Alexandria",
+        "price": 42222,
+        "distance_mi": 61
       },
       {
         "vin": "1C6SRFKT5MN547001",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT5MN547001"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT5MN547001",
+        "action": "KEEP",
+        "dealer": "CarMax Houston Katy Freeway",
+        "price": 43998,
+        "distance_mi": 229
       },
       {
         "vin": "1C6SRFKT3RN172233",
         "result": "PASS",
         "verify": "dealer_ok",
-        "note": "Toyota of Katy dealer page HTTP 200, no sold signal",
-        "best_url": "https://www.toyotaofkaty.com/used-Katy-2024-RAM-1500-Longhorn-1C6SRFKT3RN172233"
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFKT3RN172233",
+        "action": "KEEP",
+        "dealer": "Toyota of Katy",
+        "price": 51420,
+        "distance_mi": 228
       },
       {
         "vin": "1C6SRFHP3TN183380",
         "result": "PASS",
         "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.cars.com/dealers/6021559/autoplex-sulphur/inventory/"
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1C6SRFHP3TN183380",
+        "action": "KEEP",
+        "dealer": "Autoplex Sulphur",
+        "price": 56895,
+        "distance_mi": 70
       },
       {
         "vin": "1FTFW6LD0RFA98354",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0RFA98354"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0RFA98354",
+        "action": "KEEP",
+        "dealer": "EchoPark Automotive Houston",
+        "price": 55297,
+        "distance_mi": 201
       },
       {
         "vin": "1FTFW6LD0SFB84981",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0SFB84981"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD0SFB84981",
+        "action": "KEEP",
+        "dealer": "Mercedes-Benz of Houston North",
+        "price": 61910,
+        "distance_mi": 201
       },
       {
         "vin": "1FTFW6LD4SFA33089",
         "result": "PASS",
         "verify": "dealer_ok",
-        "note": "Sterling Ford dealer VDP verified",
-        "best_url": "https://www.sterlingfordopelousas.com/used-Opelousas-2025-Ford-F+150-King+Ranch-1FTFW6LD4SFA33089"
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFA33089",
+        "action": "KEEP",
+        "dealer": "Sterling Ford",
+        "price": 64895,
+        "distance_mi": 22
       },
       {
         "vin": "1FTFW6L81TFA53708",
         "result": "PASS",
-        "verify": "dealer_secondary",
-        "note": "DealerRater live from Community Honda; dealer site CF-blocked",
-        "best_url": "https://www.dealerrater.com/classifieds/2026-Ford-F_150-ad-1FTFW6L81TFA53708-38710/"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L81TFA53708",
+        "action": "KEEP",
+        "dealer": "Community Honda",
+        "price": 66435,
+        "distance_mi": 181
       },
       {
         "vin": "1FTEW1E56LFA81652",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E56LFA81652"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTEW1E56LFA81652",
+        "action": "KEEP",
+        "dealer": "TX Auto Group Houston",
+        "price": 45958,
+        "distance_mi": 213
       },
       {
         "vin": "1FTFW6L84RFA81365",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L84RFA81365"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L84RFA81365",
+        "action": "KEEP",
+        "dealer": "Group 1 Chevrolet Spring",
+        "price": 61019,
+        "distance_mi": 201
       },
       {
         "vin": "1FTFW6LD5SFA30797",
         "result": "PASS",
         "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.mendozaford.com/all-inventory/index.htm"
+        "note": "links.dealer HTTP 403 (treated reachable); links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD5SFA30797",
+        "action": "KEEP",
+        "dealer": "Mendoza Ford",
+        "price": 62460,
+        "distance_mi": 47
       },
       {
         "vin": "1FTFW6L83SFB42114",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L83SFB42114"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L83SFB42114",
+        "action": "KEEP",
+        "dealer": "Joe Myers Ford",
+        "price": 63216,
+        "distance_mi": 217
       },
       {
         "vin": "1FTFW6LD2SFA92500",
         "result": "PASS",
         "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.geauxcdjr.com/inventory/"
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD2SFA92500",
+        "action": "KEEP",
+        "dealer": "Geaux CDJR Denham Springs",
+        "price": 64378,
+        "distance_mi": 97
       },
       {
         "vin": "1FTFW6LD7SFA57161",
         "result": "PASS",
         "verify": "dealer_ok",
-        "note": "Dealer VDP live with VIN+price; sold-text was inventory boilerplate only (FALSE POSITIVE overridden)",
-        "best_url": "https://www.randallreedsplanetford.com/vehicle/1FTFW6LD7SFA57161/Used--2025--Ford--F--150--Truck_Hybrid----Humble--TX/"
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD7SFA57161",
+        "action": "KEEP",
+        "dealer": "Randall Reed's Planet Ford",
+        "price": 64650,
+        "distance_mi": 191
       },
       {
         "vin": "1FTFW6LD4SFB59386",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFB59386"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD4SFB59386",
+        "action": "KEEP",
+        "dealer": "Astro Ford",
+        "price": 67920,
+        "distance_mi": 223
       },
       {
         "vin": "1FTFW6L82SFB56277",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L82SFB56277"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6L82SFB56277",
+        "action": "KEEP",
+        "dealer": "Peters Chevrolet",
+        "price": 67995,
+        "distance_mi": 245
       },
       {
         "vin": "1FTFW6LDXTFA43272",
         "result": "PASS",
-        "verify": "aggregator_instock",
-        "note": "Live AutosToday InStock; Cars.com often 403 from box",
-        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272"
+        "verify": "dealer_ok",
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LDXTFA43272",
+        "action": "KEEP",
+        "dealer": "Marketplace Chevrolet",
+        "price": 70469,
+        "distance_mi": 171
       },
       {
         "vin": "1FTFW6LD9TFB07494",
         "result": "PASS",
         "verify": "dealer_ok",
-        "note": "Sterling Ford dealer VDP verified",
-        "best_url": "https://www.sterlingfordopelousas.com/used-Opelousas-2026-Ford-F+150-King+Ranch-1FTFW6LD9TFB07494"
+        "note": "links.carscom HTTP 403 (treated reachable)",
+        "best_url": "https://www.autostoday.com/cars-for-sale/used-cars/listing/1FTFW6LD9TFB07494",
+        "action": "KEEP",
+        "dealer": "Sterling Ford",
+        "price": 71979,
+        "distance_mi": 22
       }
     ],
+    "summary": {
+      "pass": 20,
+      "fail": 0,
+      "removed_this_pass": 0
+    },
     "removed_before_or_during_audit": [
       {
         "vin": "1FTEW1E43LFA06575",
@@ -256,9 +341,9 @@
       }
     ],
     "notes": [
-      "Cars.com VDPs often HTTP 403 from audit box \u2014 not treated as delisted if AutosToday InStock 200",
-      "Planet Ford 1FTFW6LD7SFA57161 matched inventory boilerplate sold text \u2014 overridden after manual confirm VIN+price still on dealer VDP",
-      "1FTEW1E43LFA06575 Houma KR permanently banned (caller confirmed unavailable)"
+      "Cars.com often HTTP 403 from audit box (Cloudflare) \u2014 treated as reachable when paired with dealer/AutosToday confirmation",
+      "Autos Today KR 1FTEW1E43LFA06575 permanently banned \u2014 not on board",
+      "No RamBox confirmed within 250 mi; two-tone priority placed 4 KR two-tones ahead of other KR"
     ]
   },
   "caveats": [
@@ -353,7 +438,7 @@
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip",
         "No photo CDN on SRP \u2014 open listing for photos"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -439,7 +524,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": false
     },
@@ -611,7 +696,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -868,7 +953,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -956,7 +1041,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -1130,7 +1215,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "dealer_secondary",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -1216,7 +1301,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -1302,7 +1387,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -1475,7 +1560,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -1732,7 +1817,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -1818,7 +1903,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
@@ -1905,7 +1990,7 @@
       "missingDataNotes": [
         "Dealer site blocked/403 from audit box \u2014 confirm by phone before trip"
       ],
-      "availability_verify": "aggregator_instock",
+      "availability_verify": "dealer_ok",
       "audit_result": "PASS",
       "is_stretch": true
     },
